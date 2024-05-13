@@ -1,0 +1,90 @@
+
+.openBtn {
+    background: #f1f1f1;
+    border: none;
+    padding: 10px 15px;
+    font-size: 20px;
+    cursor: pointer;
+  }
+  
+  .openBtn:hover {
+    background: #bbb;
+  }
+  
+  .overlay {
+    height: 100%;
+    width: 100%;
+    display: none;
+    position: fixed;
+  
+    top: 0;
+    left: 0;
+    z-index: 999;
+    /* background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9); */
+    background-color: white;
+    overflow: auto;
+  }
+ 
+  .overlay-content {
+
+
+
+  width: 40%;
+ 
+  margin: auto;
+  display: flex;
+  align-items: center;
+
+ 
+  margin: 50px auto 0;
+  
+  }
+  
+  .overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+  }
+  .overlay-content form{
+    width: 100%;
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  border: 1px solid black;
+}
+  .overlay .closebtn:hover {
+    color: #ccc;
+  }
+  
+  .overlay input[type=text] {
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 100%;
+   
+   
+  }
+  
+  
+  .overlay button {
+   
+  margin-left: 10px;
+   
+    background: transparent;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+  }
+  
+
+  .open{
+    display: block;
+  }
+

@@ -1,0 +1,70 @@
+#overlay {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 999 ;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .sign-popup-container{
+    place-self: center;
+    width: max(23vw,330px);
+    color: #808080;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 25px 30px;
+    border-radius: 8px;
+    font-size: 14px;
+    animation: fadeIn 0.5s;
+}
+.sign-popup-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+
+}
+.sign-popup-input{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.sign-popup-input input{
+    outline: none;
+    border: 1px solid #c9c9c9;
+    padding: 10px;
+    border-radius: 4px;
+}
+.sign-popup-container button{
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    color: white;
+    background-color: var(--secon-bg-color);
+    font-size: 15px;
+    cursor: pointer;
+}
+.sign-popup-conditon{
+    display: flex;
+    align-items: start;
+    gap: 8px;
+    margin-top: -15px;
+}
+.sign-popup-conditon input{
+    margin-top: 5px;
+}
+.sign-popup p span{
+    color: var(--secon-bg-color);
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: underline;
+}

@@ -1,0 +1,50 @@
+.section-footer{
+    background-color: #eee;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.footer-one ul li{
+    list-style: none;
+    margin-bottom: 30px;
+   
+
+}
+.social-icon {
+    display: flex;
+    gap: 10px;
+}
+.social-icon span{
+    background: none;
+    color: #9498A7;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 14px;
+    line-height: 35px;
+    display: inline-block;
+    text-align: center;
+    margin-right: 8px;
+    border: 1px solid #EEE1E0;
+}
+
+.footer-text h3{
+    color: #232F55;
+    font-size: 17px;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+.footer-text ul li{
+ list-style: none;
+ font-weight: 400;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.copywrite {
+    margin-top: 50px;
+    
+}
+.copywrite h5{
+    font-size: 14px;
+    text-align: center;
+}

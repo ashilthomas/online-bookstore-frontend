@@ -1,0 +1,39 @@
+
+
+.container-detaile-books{
+   max-width: 900px;
+   margin: auto;
+   background-color: #eee;
+   padding: 20px;
+   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.product-detaile-img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+
+.product-details {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.product-btn{
+    display: flex;
+    gap: 10px;
+}
+.product-btn button {
+   
+    border: none;
+    border-radius: 2px;
+    background-color: var(--secon-bg-color);
+    color: white;
+    width: 120px;
+  height: 40px;
+    cursor: pointer;
+}
+.product-btn button:nth-child(2){
+    background-color: rgb(62, 62, 62);
+}
