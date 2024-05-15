@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Cart.css";
+import { StoreContext } from "../../Context/StoreContext";
 
 function Cart() {
+  const {cartAllItems}=useContext(StoreContext)
+
   return (
     <div className="section">
       <div className="container">
@@ -20,14 +23,29 @@ function Cart() {
           </div>
         </div>
         <div>
-          <div className="cart-items-title cart-items-item">
-            <img src="" alt="" />
-            <p>name</p>
-            <p>$100</p>
-            <p>quantity</p>
-            <p>total</p>
-            <p>X</p>
+          {
+            cartAllItems.map((items)=>(
+              <>
+               <div className="cart-items-title cart-items-item">
+          
+
+                <img  src={`http://localhost:3003/${items.product.image}`} alt="" />
+                <p>{items.title}</p>
+                <p>${items.product.price}</p>
+                <p>{items.quantity}</p>
+                <p>{items.product.price}</p>
+                <p>X</p>
+           
+               
           </div>
+           <hr />
+           </>
+          
+            )
+
+            )
+          }
+         
           <hr />
         </div>
       </div>

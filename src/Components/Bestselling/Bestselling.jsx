@@ -63,7 +63,7 @@ function Bestselling() {
               {
                 product.map((items)=>(
   <div>
-      <BooksCard title={items.title} author={items.author}price={items.price} image={items.image} id={items._id} />
+      <BooksCard title={items.name} author={items.author}price={items.price} image={items.image} id={items._id} />
       </div>
 
                 ))

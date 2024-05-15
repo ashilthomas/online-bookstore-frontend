@@ -3,6 +3,7 @@ import { Carousel, Image } from 'react-bootstrap';
 import "./Hero.css"
 
 import React from "react";
+import { Link } from 'react-router-dom';
 
 
 function Hero() {
@@ -17,7 +18,9 @@ function Hero() {
       <Carousel.Caption className='carousel-caption'>
         <h3 className='animate__animated animate__fadeInDown'>Harry Potter and the Half-Blood Prince</h3>
         <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        <Link to={"/shope"}>
         <button className='carousel-btn'>Browse Store</button>
+        </Link>
       </Carousel.Caption>
     </Carousel.Item>
     <Carousel.Item interval={500}>
@@ -25,7 +28,9 @@ function Hero() {
       <Carousel.Caption  className='carousel-caption'>
         <h3 className='animate__animated animate__fadeInDown'>The Lion, the Witch & the Wardrobe</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <Link to={"/shope"}>
         <button className='carousel-btn'>Browse Store</button>
+        </Link>
       </Carousel.Caption>
     </Carousel.Item>
     <Carousel.Item>
@@ -35,7 +40,10 @@ function Hero() {
         <p>
           Praesent commodo cursus magna, vel scelerisque nisl consectetur.
         </p>
-        <button className='carousel-btn'>Browse Store</button>
+        <Link to={"/shope"}>
+          <button className='carousel-btn'>Browse Store</button>
+        </Link>
+      
       </Carousel.Caption>
     </Carousel.Item>
   </Carousel>

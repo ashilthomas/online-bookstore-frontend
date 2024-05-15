@@ -119,42 +119,61 @@
 
 // export default BookDetailes;
 
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import "./BookDetailes.css";
 import Recomended from "../../Components/Recomended/Recomended";
 import { useParams } from "react-router-dom";
 import { StoreContext } from "../../Context/StoreContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
 function BookDetailes() {
   const { id } = useParams();
-  const { product } = useContext(StoreContext);
-  const [cart, setCart] = useState({
-    userId: "", // Initialize with appropriate value
-    cart: [], // Initialize with appropriate value
-  });
+  const { product,getAllCart } = useContext(StoreContext);
+  const [quantity, setquantity] = useState(1);
+  const [productId, setproductId] = useState("6638c46f5211ccbe92b1cd9b");
+  const [userId, setUerId] = useState();
 
-  const handileCart = async (userId, productId, quantity) => {
-    setCart({
-      userId: "66336633163045a7a4a3c48d",
-      cart: [
-        ...cart.cart,
-        { productId: "6633e79b8dafa5b0f11c8951", quantity: 1 },
-      ],
-    });
+  const userDataString = localStorage.getItem("userData")
 
-    const res = await axios.post("http://localhost:3003/cart/addcart", cart);
+  
 
-    console.log(res);
+  useEffect(()=>{
+ const userData = JSON.parse(userDataString);
+ setUerId(userData._id);
+
+  },[])
+ 
+  const handleAddToCart = async (productId) => {
+   
+    try {
+      const res = await axios.post("http://localhost:3003/cart/addcart", {
+        quantity,
+        productId:productId,
+        userId,
+      });
+      getAllCart()
+    
+      if (res.data.success) {
+        toast(res.data.message);
+      } else {
+        toast(res.data.message);
+      }
+    } catch (error) {
+      console.error("Error adding product to cart:", error);
+
+      toast("already added to product");
+    }
   };
 
   const current = product.find((item) => item._id === id);
-
-  console.log(current);
+ 
 
   return (
     <div className="section">
+      <ToastContainer />
       <div className="container-detaile-books">
         <Row>
           <Col className="col-12 col-md-6 ">
@@ -181,7 +200,7 @@ function BookDetailes() {
                 <hr />
                 <div className="product-btn">
                   {/* Pass appropriate values to handileCart function */}
-                  <button onClick={() => handileCart()}>Add to Cart</button>
+                  <button onClick={() => handleAddToCart(current._id)}>Add to Cart</button>
                   <button>buy</button>
                 </div>
                 <hr />

@@ -8,7 +8,7 @@ function BooksCard({title,author,price,image,id}) {
   return (
     <div>
 
-        <Card className='border-0' style={{maxWidth: '210px',height:"380px",border: 'none'}}>
+        <Card className='border-0' style={{maxWidth: '210px',border: 'none'}}>
         <Link to={`bookdetailes/${id}`}>
         <img className='card-img' src={`http://localhost:3003/${image}`} alt="" />
         

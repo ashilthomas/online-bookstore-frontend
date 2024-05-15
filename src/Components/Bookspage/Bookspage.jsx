@@ -25,89 +25,7 @@ import {
 import { StoreContext } from "../../Context/StoreContext";
 import axios from "axios";
 import Cards from "../Cards/Cards";
-const products = [
-  {
-    id: 1,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
-    color: "Black",
-  },
-  {
-    id: 1,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
-    color: "Black",
-  },
-  {
-    id: 1,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
-    color: "Black",
-  },
-  {
-    id: 1,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
-    color: "Black",
-  },
-  {
-    id: 1,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
-    color: "Black",
-  },
-  {
-    id: 1,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
-    color: "Black",
-  },
-  {
-    id: 1,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
-    color: "Black",
-  },
-  {
-    id: 1,
-    name: "Basic Tee",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg",
-    imageAlt: "Front of men's Basic Tee in black.",
-    price: "$35",
-    color: "Black",
-  },
-  // More products...
-];
+
 const sortOptions = [
   { name: "Most Popular", href: "#", current: true },
   { name: "Best Rating", href: "#", current: false },
@@ -116,12 +34,12 @@ const sortOptions = [
   { name: "Price: High to Low", href: "#", current: false },
 ];
 const subCategories = [
-  { name: "History", href: "#" },
-  { name: "Horror-Thriler", href: "#" },
-  { name: "Love stories", href: "#" },
-  { name: "scince fiction", href: "#" },
+  { name: "Sci-fic", href: "#" },
+  { name: "Horror", href: "#" },
+  { name: "Romance", href: "#" },
   { name: "Biography", href: "#" },
-  { name: "fictonal", href: "#" },
+  { name: "Drama", href: "#" },
+  { name: "Thriller", href: "#" },
 ];
 const filters = [
   {
@@ -314,7 +232,7 @@ export default function Bookspage() {
         </Transition.Root>
 
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
+          <div className="flex items-baseline justify-between border-b border-gray-200 pb-5 pt-24">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">
               New Arrivals
             </h1>

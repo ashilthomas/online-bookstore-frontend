@@ -5,3 +5,7 @@
     color: gray;
     font-size: max(1vw,12px);
 }
+.cart-items-title img{
+   
+    height: 100px;
+}

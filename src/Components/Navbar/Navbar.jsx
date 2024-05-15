@@ -8,7 +8,9 @@ import { Link } from "react-router-dom";
 import { StoreContext } from "../../Context/StoreContext";
 import { FaUser } from "react-icons/fa6";
 
+
 function Navbar({ setSignShow }) {
+  
 
   const [isOpen, setIsOpen] = useState(false); 
 
@@ -51,6 +53,7 @@ function Navbar({ setSignShow }) {
   const tokenRelease = () => {
     setIsOpen(true)
     sessionStorage.removeItem("userToken");
+    localStorage.removeItem("userData");
   };
 
 
