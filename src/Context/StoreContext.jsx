@@ -16,6 +16,7 @@ const StoreContextProvider = (props) => {
   const token = sessionStorage.getItem("userToken");
 
   const userDataforCart = localStorage.getItem("userData");
+  
  
 // get all books
   useEffect(() => {
@@ -42,23 +43,36 @@ const StoreContextProvider = (props) => {
   };
 
   //cart
-  useEffect(()=>{
-    getAllCart();
-  },[])
+ 
+   
+
 
   const getAllCart = async () => {
     const cartData = await axios.post(
-      `http://localhost:3003/cart/getallcart/66439ba3ab7042280393d51c`
+      `http://localhost:3003/cart/getallcart/${userDataCart}`
     );
     setCartAllItems(cartData.data);
   };
 
- 
-  useEffect(() => {
-    const userData = JSON.parse(userDataforCart);
-    setUserDataCart(userData._id);
+ useEffect(()=>{
     handleLatestItems();
+ },[])
+
+ useEffect(() => {
+  if (userDataCart) {
     getAllCart();
+  }
+}, [userDataCart]);
+  
+
+  useEffect(() => {
+    if(userDataforCart){
+       const userData = JSON.parse(userDataforCart);
+       setUserDataCart(userData._id);
+    }
+   
+   
+    // getAllCart();
   }, []);
   const contextValue = {
     setToken,
@@ -72,7 +86,9 @@ const StoreContextProvider = (props) => {
     latestItems,
     cartAllItems,
     getAllCart,
-    loading
+    loading,
+    setLoading,
+    userDataforCart
   };
   return (
     <StoreContext.Provider value={contextValue}>

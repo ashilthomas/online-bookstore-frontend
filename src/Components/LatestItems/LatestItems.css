@@ -39,6 +39,11 @@
     border-radius: 20px;
     background-color: var(--secon-bg-color);
     color: white;
+    margin-left: 10px;
+}
+.latest-browse .active{
+    background-color: black;
+    color: white;
 }
 
 @media screen and (max-width: 768px) {

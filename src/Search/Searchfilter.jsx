@@ -4,23 +4,24 @@ import { BsSearch } from "react-icons/bs";
 import Cards from "../Components/Cards/Cards";
 import "./Searchfilter.css";
 import axios from "axios";
+import Loading from "../Components/Loading/Loading";
 
 export function Searchfilter() {
 
-  const { setSearch, search } = useContext(StoreContext);
+  const { setSearch, search,setLoading,loading } = useContext(StoreContext);
   const [searchQuery, setSearchQuery] = useState(""); // State to hold the search query
   const [searchProduct, setSearchProduct] = useState([]);
-  const [searchLoading, setSearchLoading] = useState(false);
+  // const [searchLoading, setSearchLoading] = useState(false);
 console.log(search);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        setSearchLoading(true);
+        setLoading(true);
         const res = await axios.post(
           `http://localhost:3003/products/searchbooks?query=${searchQuery}`
         );
         setSearchProduct(res.data);
-        setSearchLoading(false);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching search results:", error);
       } finally {
@@ -73,7 +74,7 @@ console.log(search);
               </h2>
 
               <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                {searchLoading ? <h5>Loading....</h5> : ""}
+                {loading && <Loading/> }
                 {searchProduct &&
                   searchProduct.map((item) => (
                     <Cards

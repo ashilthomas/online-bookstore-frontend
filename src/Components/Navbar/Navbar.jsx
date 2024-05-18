@@ -16,8 +16,9 @@ function Navbar({ setSignShow }) {
 
   const { setSearch } = useContext(StoreContext);
 
-  const token = sessionStorage.getItem("userToken");
+  const token = localStorage.getItem("userData");
 
+  console.log("tonefs",token);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -52,7 +53,7 @@ function Navbar({ setSignShow }) {
   };
   const tokenRelease = () => {
     setIsOpen(true)
-    sessionStorage.removeItem("userToken");
+    // sessionStorage.removeItem("userToken");
     localStorage.removeItem("userData");
   };
 
@@ -61,28 +62,31 @@ function Navbar({ setSignShow }) {
   return (
     <nav className="navbar animate__animated animate__fadeInDown">
       <div className="navbar-container">
-        <h2 className="fw-bold">
-          Logo<span style={{ color: "#FF1616" }}>Books</span>{" "}
+        <Link to={"/"}>
+          <h2 className="fw-bold">
+          Logo<span style={{ color: "#FF1616",cursor:"pointer" }}>Books</span>{" "}
         </h2>
+        </Link>
+      
 
         <ul className={isOpen ? "nav-menu active" : "nav-menu"}>
           {" "}
           {/* Conditional CSS class for responsiveness */}
-          <li className="nav-item">
+          <li className="nav-item">  <Link to={"/"}>
             <a href="" className="nav-links">
-              <Link to={"/"}>Home</Link>
-            </a>
+           Home
+            </a></Link>
           </li>
           <li className="nav-item">
             <a href="" className="nav-links">
               About
             </a>
-          </li>
+          </li> 
           <li className="nav-item">
-            <Link to={"/shope"}>Shope</Link>
-            {/* <a href="" className="nav-links">
-             
-            </a> */}
+          <Link to={"/shope"}>
+            <a href="" className="nav-links">
+              Shope
+            </a></Link>
           </li>
           <li className="nav-item">
             <a href="" className="nav-links">
@@ -110,10 +114,10 @@ function Navbar({ setSignShow }) {
             <BsSearch size={20} />
           </span>
           <Link to={"/cart"}>
-            <div className="dot"> </div>
+           
             <IoCartOutline size={25} />
           </Link>
-          {token ? (
+          {token? (
             <div className="dropdown">
               <span onClick={handleButtonClick} className="dropbtn">
                 {" "}

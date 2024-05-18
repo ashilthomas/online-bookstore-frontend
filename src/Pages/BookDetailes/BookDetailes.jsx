@@ -138,8 +138,6 @@ function BookDetailes() {
 
   const userDataString = localStorage.getItem("userData")
 
-  
-
   useEffect(()=>{
  const userData = JSON.parse(userDataString);
  setUerId(userData._id);
@@ -199,7 +197,7 @@ function BookDetailes() {
                 </p>
                 <hr />
                 <div className="product-btn">
-                  {/* Pass appropriate values to handileCart function */}
+                 
                   <button onClick={() => handleAddToCart(current._id)}>Add to Cart</button>
                   <button>buy</button>
                 </div>
@@ -207,9 +205,9 @@ function BookDetailes() {
               </>
             )}
           </Col>
-        </Row>
+        </Row>     
       </div>
-      <Recomended />
+ <Recomended />
     </div>
   );
 }

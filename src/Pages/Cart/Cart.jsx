@@ -5,6 +5,8 @@ import { StoreContext } from "../../Context/StoreContext";
 function Cart() {
   const {cartAllItems}=useContext(StoreContext)
 
+
+
   return (
     <div className="section">
       <div className="container">
@@ -24,6 +26,7 @@ function Cart() {
         </div>
         <div>
           {
+
             cartAllItems.map((items)=>(
               <>
                <div className="cart-items-title cart-items-item">

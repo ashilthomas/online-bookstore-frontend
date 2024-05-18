@@ -24,9 +24,10 @@ function App() {
   return (
     <div>
       
-      <BrowserRouter>
-        {signShow ? <Sign setSignShow={setSignShow} /> : null}
+      <BrowserRouter> 
         {loading && <Loading/>}
+        {signShow ? <Sign setSignShow={setSignShow} /> : null}
+       
         <Searchfilter/>
         <Navbar setSignShow={setSignShow} />
         <Routes>

@@ -32,7 +32,7 @@ function Sign({ setSignShow }) {
       const res = await axios.post(newUrl, user);
      
    
-      sessionStorage.setItem("userToken", res.data.token);
+     localStorage.setItem("userToken", res.data.token);
 
       if (res.data.success) {
         
