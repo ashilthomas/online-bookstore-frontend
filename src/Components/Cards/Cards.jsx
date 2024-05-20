@@ -30,9 +30,9 @@ function Cards({ title, author, price, image, id, setSearch }) {
       <Link to={`/bookdetailes/${id}`}>
         <div className="mt-4 flex justify-between">
           <div>
-            <h3 className="text-sm text-gray-700">
+            <h3 className="text-sm text-gray-700"> 
              <a href="">   <span aria-hidden="true" className="absolute inset-0" />
-                {title}</a>
+               {title}</a>
              
             
             </h3>

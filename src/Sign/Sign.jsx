@@ -29,20 +29,17 @@ function Sign({ setSignShow }) {
       newUrl = "http://localhost:3003/user/register"; // Assign newUrl directly
     }
     try {
-      const res = await axios.post(newUrl, user);
-     
-   
-     localStorage.setItem("userToken", res.data.token);
+      const res = await axios.post(newUrl, user, {
+        withCredentials: true,
+      });
 
       if (res.data.success) {
-        
-        localStorage.setItem("userData", JSON.stringify(res.data.user));
-        toast.success(res.data.message);
+       
+        toast(res.data.message);
 
         setSignShow(false);
 
         if (currState == "login") {
-          localStorage.setItem("userData", JSON.stringify(res.data.user));
         }
         if (currState == "sign Up") {
           setCurrState("login");
@@ -51,7 +48,9 @@ function Sign({ setSignShow }) {
         toast.error(res.data.message);
       }
     } catch (error) {
-      console.log(error);
+      toast.error(
+        error.response ? error.response.data.message : "An error occurred"
+      );
     }
   };
 

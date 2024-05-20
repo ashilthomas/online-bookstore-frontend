@@ -11,7 +11,7 @@ export function Searchfilter() {
   const { setSearch, search,setLoading,loading } = useContext(StoreContext);
   const [searchQuery, setSearchQuery] = useState(""); // State to hold the search query
   const [searchProduct, setSearchProduct] = useState([]);
-  // const [searchLoading, setSearchLoading] = useState(false);
+
 console.log(search);
   useEffect(() => {
     const fetchData = async () => {

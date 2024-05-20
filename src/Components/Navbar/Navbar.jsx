@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Navbar.css";
 import { AiOutlineClose } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -7,30 +7,22 @@ import { IoCartOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { StoreContext } from "../../Context/StoreContext";
 import { FaUser } from "react-icons/fa6";
-
+import jsCookie from "js-cookie";
 
 function Navbar({ setSignShow }) {
-  
-
-  const [isOpen, setIsOpen] = useState(false); 
+  const [isOpen, setIsOpen] = useState(false);
 
   const { setSearch } = useContext(StoreContext);
 
-  const token = localStorage.getItem("userData");
-
-  console.log("tonefs",token);
+  const token = jsCookie.get("token");
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-
-
   const openSearch = () => {
     setSearch(true);
   };
-
-
 
   const [dropdown, setDropdown] = useState(false);
 
@@ -52,11 +44,9 @@ function Navbar({ setSignShow }) {
     event.stopPropagation(); // Stop the event from propagating to the parent elements
   };
   const tokenRelease = () => {
-    setIsOpen(true)
-    // sessionStorage.removeItem("userToken");
-    localStorage.removeItem("userData");
+    jsCookie.remove("token");
+    setIsOpen(true);
   };
-
 
   const style = { color: "black" };
   return (
@@ -64,29 +54,35 @@ function Navbar({ setSignShow }) {
       <div className="navbar-container">
         <Link to={"/"}>
           <h2 className="fw-bold">
-          Logo<span style={{ color: "#FF1616",cursor:"pointer" }}>Books</span>{" "}
-        </h2>
+            Logo
+            <span style={{ color: "#FF1616", cursor: "pointer" }}>
+              Books
+            </span>{" "}
+          </h2>
         </Link>
-      
 
         <ul className={isOpen ? "nav-menu active" : "nav-menu"}>
           {" "}
           {/* Conditional CSS class for responsiveness */}
-          <li className="nav-item">  <Link to={"/"}>
-            <a href="" className="nav-links">
-           Home
-            </a></Link>
+          <li className="nav-item">
+            {" "}
+            <Link to={"/"}>
+              <a href="" className="nav-links">
+                Home
+              </a>
+            </Link>
           </li>
           <li className="nav-item">
             <a href="" className="nav-links">
               About
             </a>
-          </li> 
+          </li>
           <li className="nav-item">
-          <Link to={"/shope"}>
-            <a href="" className="nav-links">
-              Shope
-            </a></Link>
+            <Link to={"/shope"}>
+              <a href="" className="nav-links">
+                Shope
+              </a>
+            </Link>
           </li>
           <li className="nav-item">
             <a href="" className="nav-links">
@@ -100,8 +96,6 @@ function Navbar({ setSignShow }) {
           </li>
         </ul>
 
-     
-
         <div className="nav-icon" onClick={toggleMenu}>
           {isOpen ? (
             <AiOutlineClose size={30} style={style} />
@@ -114,10 +108,10 @@ function Navbar({ setSignShow }) {
             <BsSearch size={20} />
           </span>
           <Link to={"/cart"}>
-           
             <IoCartOutline size={25} />
           </Link>
-          {token? (
+
+          {token ? (
             <div className="dropdown">
               <span onClick={handleButtonClick} className="dropbtn">
                 {" "}
@@ -129,13 +123,14 @@ function Navbar({ setSignShow }) {
                 className={`dropdown-content ${dropdown ? "show" : ""}`}
                 onClick={handleDropdownClick}
               >
-               <Link to={"/admin"}>
-                <a href="#home">Admin</a>
-               </Link>
-               
+                <Link to={"/admin"}>
+                  <a href="#home">Admin</a>
+                </Link>
+
                 <a href="#about">User</a>
-                <a href="#" onClick={tokenRelease}>Logout</a>
-               
+                <a href="#" onClick={tokenRelease}>
+                  Logout
+                </a>
               </div>
             </div>
           ) : (

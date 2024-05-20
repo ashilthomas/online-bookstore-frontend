@@ -134,15 +134,11 @@ function BookDetailes() {
   const { product,getAllCart } = useContext(StoreContext);
   const [quantity, setquantity] = useState(1);
   const [productId, setproductId] = useState("6638c46f5211ccbe92b1cd9b");
-  const [userId, setUerId] = useState();
 
-  const userDataString = localStorage.getItem("userData")
 
-  useEffect(()=>{
- const userData = JSON.parse(userDataString);
- setUerId(userData._id);
+  
 
-  },[])
+
  
   const handleAddToCart = async (productId) => {
    
@@ -150,8 +146,8 @@ function BookDetailes() {
       const res = await axios.post("http://localhost:3003/cart/addcart", {
         quantity,
         productId:productId,
-        userId,
-      });
+    
+      },{withCredentials:true});
       getAllCart()
     
       if (res.data.success) {

@@ -7,12 +7,11 @@ import axios from "axios";
 function LatestItems() {
   const { handleLatestItems, latestItems } = useContext(StoreContext);
   const [visibleItems, setVisibleItems] = useState(7);
-  const { product } = useContext(StoreContext);
   const [latestCategories, setLatestCategories] = useState([]);
-  // const totalItems = latestCategories.length;
-  // console.log(totalItems);
 
   console.log(latestItems);
+
+ 
 
   useEffect(() => {
     const fetchCategoies = async () => {
@@ -22,12 +21,17 @@ function LatestItems() {
     fetchCategoies();
   }, []);
 
+  useEffect(() => {
+    handleLatestItems("");
+  }, []);
+
   const handleSeeMore = () => {
     setVisibleItems((prevVisibleItems) => prevVisibleItems + 7); // Increase the number of visible items by 3
   };
 
-  // const slilcedProjuect = product.slice(0, 6);
+
   const sliceCategories = latestCategories.slice(0, 5);
+  console.log(sliceCategories);
 
   return (
     <div class="latestItems">
@@ -38,7 +42,9 @@ function LatestItems() {
           </div>
           <div class="col-md-6">
             <div class="latest-categories">
-              <ul>
+              <ul>    <li onClick={() => handleLatestItems("")}>
+                  <span>All</span>
+                </li>
                 {sliceCategories.map((category) => (
                   <li
                     key={category._id}
@@ -48,9 +54,7 @@ function LatestItems() {
                   </li>
                 ))}
 
-                <li onClick={() => handleLatestItems("")}>
-                  <span>All</span>
-                </li>
+            
               </ul>
             </div>
           </div>
