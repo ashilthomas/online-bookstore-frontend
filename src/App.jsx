@@ -38,7 +38,7 @@ function App() {
           <Route path="/admin" element={<Adminpage />} />
           <Route path="/add" element={<Add />} />
           <Route path="/list" element={<List />} />
-          {/* <Route path="/loading" element={<Loading/>} /> */}
+        
          
         </Routes>
         <Footer />

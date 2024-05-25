@@ -7,7 +7,7 @@ import Sidebar from '../../../Components/Sidebar/Sidebar'
 
 function Add() {
 
-    // const url = "kjsdfh"
+  
    
     const [image,setImage]=useState(false)
     const [data,setData]=useState({

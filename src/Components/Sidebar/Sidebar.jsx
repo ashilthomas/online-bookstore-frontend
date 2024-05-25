@@ -4,7 +4,7 @@ import "./Sidebar.css"
 import { StoreContext } from '../../Context/StoreContext'
 
 function Sidebar() {
-    const {exma}=useContext(StoreContext)
+   
   return (
     <div className='sidebar'>
     <div className="sidebar-options">

@@ -1,17 +1,4 @@
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
+
 import { Fragment, useContext, useEffect, useState } from "react";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
@@ -66,15 +53,15 @@ const filters = [
     ],
   },
   {
-    id: "size",
-    name: "Size",
+    id: "Size",
+    name: "Price",
     options: [
-      { value: "2l", label: "2L", checked: false },
-      { value: "6l", label: "6L", checked: false },
-      { value: "12l", label: "12L", checked: false },
-      { value: "18l", label: "18L", checked: false },
-      { value: "20l", label: "20L", checked: false },
-      { value: "40l", label: "40L", checked: true },
+      { value: "2l", label: "300", checked: false },
+      { value: "6l", label: "400", checked: false },
+      { value: "12l", label: "500", checked: false },
+      { value: "18l", label: "600", checked: false },
+      { value: "20l", label: "700", checked: false },
+      { value: "40l", label: "800", checked: true },
     ],
   },
 ];
@@ -85,7 +72,7 @@ function classNames(...classes) {
 
 export default function Bookspage() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
-  const { product } = useContext(StoreContext);
+ 
   const [filterItems, setFilterdItems] = useState("");
   const [clickFilter,setClickFilter]= useState([])
   useEffect(() => {
@@ -234,7 +221,7 @@ export default function Bookspage() {
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex items-baseline justify-between border-b border-gray-200 pb-5 pt-24">
             <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-              New Arrivals
+              All Books
             </h1>
 
             <div className="flex items-center">

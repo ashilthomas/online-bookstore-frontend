@@ -9,9 +9,7 @@ function LatestItems() {
   const [visibleItems, setVisibleItems] = useState(7);
   const [latestCategories, setLatestCategories] = useState([]);
 
-  console.log(latestItems);
 
- 
 
   useEffect(() => {
     const fetchCategoies = async () => {
@@ -26,12 +24,10 @@ function LatestItems() {
   }, []);
 
   const handleSeeMore = () => {
-    setVisibleItems((prevVisibleItems) => prevVisibleItems + 7); // Increase the number of visible items by 3
+    setVisibleItems((prevVisibleItems) => prevVisibleItems + 7); 
   };
 
-
   const sliceCategories = latestCategories.slice(0, 5);
-  console.log(sliceCategories);
 
   return (
     <div class="latestItems">
@@ -42,7 +38,9 @@ function LatestItems() {
           </div>
           <div class="col-md-6">
             <div class="latest-categories">
-              <ul>    <li onClick={() => handleLatestItems("")}>
+              <ul>
+                {" "}
+                <li onClick={() => handleLatestItems("")}>
                   <span>All</span>
                 </li>
                 {sliceCategories.map((category) => (
@@ -53,8 +51,6 @@ function LatestItems() {
                     {category}
                   </li>
                 ))}
-
-            
               </ul>
             </div>
           </div>

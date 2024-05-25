@@ -5,7 +5,7 @@ import { StoreContext } from '../../Context/StoreContext'
 function Recomended() {
   const {product}=useContext(StoreContext)
 
-  const slicedProducts = product.slice(0,4)
+  const slicedProducts = product.slice(0,6)
   return (
     <div>
 
@@ -16,7 +16,7 @@ function Recomended() {
         Recomended
        </h2>
 
-       <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+       <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-6 xl:gap-x-8">
        
          {slicedProducts &&
           slicedProducts.map((item) => (

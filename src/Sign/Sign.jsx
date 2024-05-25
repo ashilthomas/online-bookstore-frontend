@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./Sign.css";
 import axios from "axios";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { StoreContext } from "../Context/StoreContext";
+
 
 function Sign({ setSignShow }) {
-  const { setUserData, userData } = useContext(StoreContext);
+ 
 
   const [currState, setCurrState] = useState("login");
   const [user, setUser] = useState({

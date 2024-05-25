@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Navbar.css";
 import { AiOutlineClose } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -124,7 +124,7 @@ function Navbar({ setSignShow }) {
                 onClick={handleDropdownClick}
               >
                 <Link to={"/admin"}>
-                  <a href="#home">Admin</a>
+                 Admin
                 </Link>
 
                 <a href="#about">User</a>
