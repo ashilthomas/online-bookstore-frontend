@@ -49,7 +49,7 @@ function BookDetailes() {
     if (!selectedCourse) return;
     const response = await axios.post(
       "http://localhost:3003/payment/order",
-      { amount: selectedCourse.price ,productId},
+      { amount: selectedCourse.price ,productId},{withCredentials:true}
     );
 
     const order = await response.data.data;
@@ -68,7 +68,7 @@ function BookDetailes() {
 
         const validateResponse = await axios.post(
           "http://localhost:3003/payment/verify",
-          body,
+          body,{withCredentials:true}
         );
 
         const jsonResponse = await validateResponse;

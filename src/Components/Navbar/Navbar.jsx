@@ -126,8 +126,11 @@ function Navbar({ setSignShow }) {
                 <Link to={"/admin"}>
                  Admin
                 </Link>
+                <Link to={"/userdetails"}>
+                User
+                </Link>
 
-                <a href="#about">User</a>
+                
                 <a href="#" onClick={tokenRelease}>
                   Logout
                 </a>

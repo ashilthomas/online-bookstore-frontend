@@ -6,7 +6,7 @@ import axios from "axios";
 
 function LatestItems() {
   const { handleLatestItems, latestItems } = useContext(StoreContext);
-  const [visibleItems, setVisibleItems] = useState(7);
+  const [visibleItems, setVisibleItems] = useState(6);
   const [latestCategories, setLatestCategories] = useState([]);
 
 
@@ -24,7 +24,7 @@ function LatestItems() {
   }, []);
 
   const handleSeeMore = () => {
-    setVisibleItems((prevVisibleItems) => prevVisibleItems + 7); 
+    setVisibleItems((prevVisibleItems) => prevVisibleItems + 6); 
   };
 
   const sliceCategories = latestCategories.slice(0, 5);
@@ -58,7 +58,7 @@ function LatestItems() {
         <div class="row mt-5">
           {latestItems &&
             latestItems.slice(0, visibleItems).map((items) => (
-              <div class="col">
+              <div class="col-md-2">
                 <BooksCard
                   title={items.title}
                   author={items.author}

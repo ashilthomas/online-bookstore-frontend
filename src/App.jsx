@@ -15,6 +15,7 @@ import List from "./Pages/Admin/List/List";
 import Searchfilter from './Search/Searchfilter';
 import Loading from "./Components/Loading/Loading";
 import { StoreContext } from "./Context/StoreContext";
+import UserDetails from "./Pages/UserDetails/UserDetails";
 
 
 
@@ -38,6 +39,7 @@ function App() {
           <Route path="/admin" element={<Adminpage />} />
           <Route path="/add" element={<Add />} />
           <Route path="/list" element={<List />} />
+          <Route path="/userdetails" element={<UserDetails/>}/>
         
          
         </Routes>
