@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import "./Sign.css";
 import axios from "axios";
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 
 function Sign({ setSignShow }) {
- 
-
+  const navigate = useNavigate()
   const [currState, setCurrState] = useState("login");
   const [user, setUser] = useState({
     name: "",
@@ -19,40 +18,48 @@ function Sign({ setSignShow }) {
     const { name, value } = event.target;
     setUser((prevData) => ({ ...prevData, [name]: value }));
   };
-
+  
   const onLogin = async (event) => {
     event.preventDefault();
-    let newUrl = ""; // Initialize newUrl to an empty string
+    let newUrl = "";
     if (currState === "login") {
-      newUrl = "http://localhost:3003/user/login"; // Assign newUrl directly
+      newUrl = "http://localhost:3003/user/login";
     } else {
-      newUrl = "http://localhost:3003/user/register"; // Assign newUrl directly
+      newUrl = "http://localhost:3003/user/register";
     }
     try {
       const res = await axios.post(newUrl, user, {
         withCredentials: true,
       });
-
+  
       if (res.data.success) {
-       
         toast(res.data.message);
-
         setSignShow(false);
-
-        if (currState == "login") {
-        }
-        if (currState == "sign Up") {
+  
+        if (currState === "login") {
+          // Handle login specific logic here
+        } else if (currState === "signUp") {
           setCurrState("login");
         }
       } else {
         toast.error(res.data.message);
       }
     } catch (error) {
-      toast.error(
-        error.response ? error.response.data.message : "An error occurred"
-      );
+      if (error.response && error.response.status === 401) {
+        if (error.response.data.message === "Token expired") {
+          alert("Your session has expired. Please log in again.");
+           navigate('/')
+        }else {
+          alert("Unauthorized access.");
+        }
+      } else {
+        toast.error(
+          error.response ? error.response.data.message : "An error occurred"
+        );
+      }
     }
   };
+  
 
   return (
     <div id="overlay">

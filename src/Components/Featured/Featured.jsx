@@ -10,11 +10,22 @@ function Featured() {
       <Row>
         <Col className="col-12 col-md-9 col-sm-12">
           <h2 className="mb-5 text-center">Featured This Week</h2>
-          <img 
-            style={{ width: "100%", height: "300px", objectFit: "cover" }} 
-            src="https://uicookies.com/wp-content/uploads/2020/07/books-website-templates.jpg" 
-            alt="" 
-          />
+       <div className="feature-img">
+        <div className="feature-text">
+
+      
+          <h3>Order E Book online</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum repellendus fugit vitae cumque cum quis dolor saepe vel blanditiis vero.</p>
+          <button>Read more</button>
+
+  </div>
+
+
+
+
+
+
+       </div>
         </Col>
         <Col className="col-12 col-md-3 col-12">
           <div
