@@ -8,7 +8,7 @@ function UserDetails() {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const res = await axios.get("http://localhost:3003/orders/allorders", { withCredentials: true });
+            const res = await axios.get("https://online-bookstore-backend-4bsl.onrender.com/orders/allorders", { withCredentials: true });
             console.log("Orders data:", res.data);
             setOrder(res.data);
           } catch (error) {

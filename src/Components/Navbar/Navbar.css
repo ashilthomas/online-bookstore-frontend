@@ -12,6 +12,7 @@
     width: 100%;
     z-index: 3;
     background-color: white;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .navbar-container {

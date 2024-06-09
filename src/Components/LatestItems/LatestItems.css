@@ -29,7 +29,7 @@
     color: #454e6d;
 }
 
-.latest-categories ul li:hover {
+.latest-categories ul .active {
     background-color: var(--secon-bg-color);
     color: white;
 }

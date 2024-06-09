@@ -8,20 +8,19 @@ function LatestItems() {
   const { handleLatestItems, latestItems } = useContext(StoreContext);
   const [visibleItems, setVisibleItems] = useState(6);
   const [latestCategories, setLatestCategories] = useState([]);
-
-
+  const [currentCategory, setCurrentCategory] = useState("");
 
   useEffect(() => {
-    const fetchCategoies = async () => {
-      const res = await axios.get("http://localhost:3003/products/categories");
+    const fetchCategories = async () => {
+      const res = await axios.get("https://online-bookstore-backend-4bsl.onrender.com/products/categories");
       setLatestCategories(res.data.categories);
     };
-    fetchCategoies();
+    fetchCategories();
   }, []);
 
   useEffect(() => {
-    handleLatestItems("");
-  }, []);
+    handleLatestItems(currentCategory);
+  }, [currentCategory, handleLatestItems]);
 
   const handleSeeMore = () => {
     setVisibleItems((prevVisibleItems) => prevVisibleItems + 6); 
@@ -29,36 +28,40 @@ function LatestItems() {
 
   const sliceCategories = latestCategories.slice(0, 5);
 
+  const handleCategoryClick = (category) => {
+    setCurrentCategory(category);
+    handleLatestItems(category);
+  };
+
   return (
-    <div class="latestItems">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-md-6">
+    <div className="latestItems">
+      <div className="container">
+        <div className="row align-items-center">
+          <div className="col-md-6">
             <h2>Latest Published Items</h2>
           </div>
-          <div class="col-md-6">
-            <div class="latest-categories">
+          <div className="col-md-6">
+            <div className="latest-categories">
               <ul>
-                {" "}
-                <li onClick={() => handleLatestItems("")}>
+                <li className={currentCategory === "" ? "active" : ""}
+                    onClick={() => handleCategoryClick("")}>
                   <span>All</span>
                 </li>
                 {sliceCategories.map((category) => (
-                  <li
-                    key={category._id}
-                    onClick={() => handleLatestItems(category)}
-                  >
-                    {category}
+                  <li className={category === currentCategory ? "active" : ""}
+                      key={category._id}
+                      onClick={() => handleCategoryClick(category)}>
+                    {category} {/* Assuming each category has a 'name' property */}
                   </li>
                 ))}
               </ul>
             </div>
           </div>
         </div>
-        <div class="row mt-5">
+        <div className="row mt-5">
           {latestItems &&
             latestItems.slice(0, visibleItems).map((items) => (
-              <div class="col-md-2">
+              <div className="col-md-2" key={items._id}> {/* Added key here */}
                 <BooksCard
                   title={items.title}
                   author={items.author}
@@ -68,9 +71,8 @@ function LatestItems() {
                 />
               </div>
             ))}
-
-          <div class="col-12 latest-browse text-center mt-4">
-            {visibleItems < latestItems.length && ( // Check against latestItems length
+          <div className="col-12 latest-browse text-center mt-4">
+            {visibleItems < latestItems.length && (
               <button onClick={handleSeeMore}>See More</button>
             )}
           </div>

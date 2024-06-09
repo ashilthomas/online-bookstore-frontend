@@ -23,9 +23,9 @@ function Sign({ setSignShow }) {
     event.preventDefault();
     let newUrl = "";
     if (currState === "login") {
-      newUrl = "http://localhost:3003/user/login";
+      newUrl = "https://online-bookstore-backend-4bsl.onrender.com/user/login";
     } else {
-      newUrl = "http://localhost:3003/user/register";
+      newUrl = "https://online-bookstore-backend-4bsl.onrender.com/user/register";
     }
     try {
       const res = await axios.post(newUrl, user, {
@@ -48,14 +48,12 @@ function Sign({ setSignShow }) {
       if (error.response && error.response.status === 401) {
         if (error.response.data.message === "Token expired") {
           alert("Your session has expired. Please log in again.");
-           navigate('/')
-        }else {
+          navigate('/');
+        } else {
           alert("Unauthorized access.");
         }
       } else {
-        toast.error(
-          error.response ? error.response.data.message : "An error occurred"
-        );
+        toast.error(error.response ? error.response.data.message : "An error occurred");
       }
     }
   };

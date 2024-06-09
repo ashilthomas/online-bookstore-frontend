@@ -18,7 +18,7 @@ console.log(search);
       try {
         setLoading(true);
         const res = await axios.post(
-          `http://localhost:3003/products/searchbooks?query=${searchQuery}`
+          `https://online-bookstore-backend-4bsl.onrender.com/products/searchbooks?query=${searchQuery}`
         );
         setSearchProduct(res.data);
         setLoading(false);

@@ -20,7 +20,7 @@ const StoreContextProvider = (props) => {
     const fetchData = async () => {
       setLoading(true);
       const res = await axios.get(
-        "http://localhost:3003/products/allbooks",
+        "https://online-bookstore-backend-4bsl.onrender.com/products/allbooks",
         {}
       );
       setLoading(false);
@@ -32,7 +32,7 @@ const StoreContextProvider = (props) => {
   // Handle latest item filter using queries
   const handleLatestItems = async (items) => {
     const res = await axios.post(
-      `http://localhost:3003/products/searchbooks?query=${items}`
+      `https://online-bookstore-backend-4bsl.onrender.com/products/searchbooks?query=${items}`
     );
     setLatestItems(res.data);
   };
@@ -40,7 +40,7 @@ const StoreContextProvider = (props) => {
   // Fetch all cart items
   const getAllCart = async () => {
     const cartData = await axios.post(
-      "http://localhost:3003/cart/getallcart",
+      "https://online-bookstore-backend-4bsl.onrender.com/cart/getallcart",
       {},
       { withCredentials: true }
     );
@@ -52,7 +52,7 @@ const StoreContextProvider = (props) => {
     try {
       console.log(productId);
       await axios.post(
-        `http://localhost:3003/cart/deletecart`,
+        `https://online-bookstore-backend-4bsl.onrender.com/cart/deletecart`,
         { productId: productId },
         { withCredentials: true }
       );
@@ -76,7 +76,7 @@ const StoreContextProvider = (props) => {
 
     try {
       const res = await axios.post(
-        "http://localhost:3003/cart/updatequantity",
+        "https://online-bookstore-backend-4bsl.onrender.com/cart/updatequantity",
         { productId, quantity: newQuantity },
         { withCredentials: true }
       );

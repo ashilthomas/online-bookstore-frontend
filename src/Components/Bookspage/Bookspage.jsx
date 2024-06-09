@@ -80,7 +80,7 @@ export default function Bookspage() {
       try {
      
         const res = await axios.post(
-          `http://localhost:3003/products/searchbooks?query=${filterItems}`
+          `https://online-bookstore-backend-4bsl.onrender.com/products/searchbooks?query=${filterItems}`
         );
         setClickFilter(res.data);
        

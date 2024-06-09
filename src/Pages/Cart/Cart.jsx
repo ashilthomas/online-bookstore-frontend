@@ -31,6 +31,7 @@ function Cart() {
         </div>
         <div>
           {cartAllItems.map((item) => (
+            <>
             <div className="cart-items-title cart-items-item" key={item.product._id}>
               <img 
                 src={`http://localhost:3003/${item.product.image}`}
@@ -60,9 +61,10 @@ function Cart() {
               >
                 X
               </p>
-            </div>
+            </div>  <hr />
+            </>
           ))}
-          <hr />
+        
         </div>
       </div>
     </div>

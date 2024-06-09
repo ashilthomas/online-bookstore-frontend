@@ -12,36 +12,83 @@ import Cart from "./Pages/Cart/Cart";
 import Adminpage from "./Pages/Admin/Adminpage/Adminpage";
 import Add from "./Pages/Admin/Add/Add";
 import List from "./Pages/Admin/List/List";
-import Searchfilter from './Search/Searchfilter';
+import Searchfilter from "./Search/Searchfilter";
 import Loading from "./Components/Loading/Loading";
 import { StoreContext } from "./Context/StoreContext";
 import UserDetails from "./Pages/UserDetails/UserDetails";
-
-
+import ProtectedRoutes from "./Components/Utils/ProtectedRoutes";
 
 function App() {
   const [signShow, setSignShow] = useState(false);
-  const {loading}=useContext(StoreContext)
+  const { loading } = useContext(StoreContext);
   return (
     <div>
-      
-      <BrowserRouter> 
-        {loading && <Loading/>}
+      <BrowserRouter>
+        {loading && <Loading />}
         {signShow ? <Sign setSignShow={setSignShow} /> : null}
-       
-        <Searchfilter/>
+
+        <Searchfilter />
         <Navbar setSignShow={setSignShow} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/shope" element={<Bookspage />} />
-          <Route path="bookdetailes/:id" element={<BookDetailes />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/admin" element={<Adminpage />} />
-          <Route path="/add" element={<Add />} />
-          <Route path="/list" element={<List />} />
-          <Route path="/userdetails" element={<UserDetails/>}/>
-        
-         
+
+          <Route
+            path="/admin"
+            element={
+              <ProtectedRoutes>
+                <Adminpage />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/list"
+            element={
+              <ProtectedRoutes>
+                <List />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/add"
+            element={
+              <ProtectedRoutes>
+                <Add />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/cart"
+            element={
+              <ProtectedRoutes>
+                <Cart />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/shope"
+            element={
+              <ProtectedRoutes>
+                <Bookspage />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/userdetails"
+            element={
+              <ProtectedRoutes>
+               <UserDetails />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/bookdetailes/:id"
+            element={
+              <ProtectedRoutes>
+                <BookDetailes />
+              </ProtectedRoutes>
+            }
+          />
+
         </Routes>
         <Footer />
       </BrowserRouter>
