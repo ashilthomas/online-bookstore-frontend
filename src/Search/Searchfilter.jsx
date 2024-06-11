@@ -5,62 +5,74 @@ import Cards from "../Components/Cards/Cards";
 import "./Searchfilter.css";
 import axios from "axios";
 import Loading from "../Components/Loading/Loading";
+import debounce from "lodash.debounce";
+import instance from "../Axios";
 
 export function Searchfilter() {
-
-  const { setSearch, search,setLoading,loading } = useContext(StoreContext);
+  const { setSearch, search, setLoading, loading } = useContext(StoreContext);
   const [searchQuery, setSearchQuery] = useState(""); // State to hold the search query
   const [searchProduct, setSearchProduct] = useState([]);
 
-console.log(search);
+  console.log(searchQuery);
+
   useEffect(() => {
     const fetchData = async () => {
+     
       try {
         setLoading(true);
-        const res = await axios.post(
-          `https://online-bookstore-backend-4bsl.onrender.com/products/searchbooks?query=${searchQuery}`
+        const res = await instance.get(
+          `products/searchbooks?query=${searchQuery}`
         );
         setSearchProduct(res.data);
-        setLoading(false);
       } catch (error) {
         console.error("Error fetching search results:", error);
       } finally {
-        setSearchLoading(false);
+        setLoading(false);
       }
     };
-    fetchData();
-  }, [searchQuery]);
 
-  const handleSearch = (e) => {
-    e.preventDefault();
+    const debouncedFetchData = debounce(fetchData, 500);
+    debouncedFetchData();
 
+    return () => {
+      debouncedFetchData.cancel();
+    };
+  }, [searchQuery, setLoading]);
+
+  const handleInputChange = (e) => {
     setSearchQuery(e.target.value);
   };
-  const handileDeleteSearch = () => {
+
+  const handleDeleteSearch = () => {
     setSearchQuery("");
   };
 
-//   const closeSearch = () => {
-//     setSearch(false);
-//   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // No need to set search query here because it is already updated on change
+  };
 
   return (
     <div>
       <div id="myOverlay" className={`overlay ${search ? "open" : ""}`}>
-        <span className="closebtn" onClick={()=>setSearch(false)} title="Close Overlay">
+        <span
+          className="closebtn"
+          onClick={() => setSearch(false)}
+          title="Close Overlay"
+        >
           ×
         </span>
 
         <div className="overlay-content">
-          <form onSubmit={handleSearch}>
+          <form onSubmit={handleSubmit}>
             <input
               type="text"
               placeholder="Search book by author"
               name="search"
               value={searchQuery}
-              onChange={handleSearch} // Update searchQuery state onChange
+              onChange={handleInputChange} // Update searchQuery state onChange
             />
-            <span onClick={handileDeleteSearch}>X</span>
+            <span onClick={handleDeleteSearch}>X</span>
             <button type="submit">
               <BsSearch size={20} />
             </button>
@@ -74,7 +86,7 @@ console.log(search);
               </h2>
 
               <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-6 xl:gap-x-8">
-                {loading && <Loading/> }
+                {loading && <Loading />}
                 {searchProduct &&
                   searchProduct.map((item) => (
                     <Cards

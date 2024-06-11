@@ -1,6 +1,7 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import instance from "../Axios";
 
 export const StoreContext = createContext(null);
 
@@ -19,8 +20,8 @@ const StoreContextProvider = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      const res = await axios.get(
-        "https://online-bookstore-backend-4bsl.onrender.com/products/allbooks",
+      const res = await instance.get(
+        "products/allbooks",
         {}
       );
       setLoading(false);
@@ -29,18 +30,23 @@ const StoreContextProvider = (props) => {
     fetchData();
   }, []);
 
-  // Handle latest item filter using queries
+ 
   const handleLatestItems = async (items) => {
-    const res = await axios.post(
-      `https://online-bookstore-backend-4bsl.onrender.com/products/searchbooks?query=${items}`
-    );
-    setLatestItems(res.data);
-  };
+  
+    const res = await instance.get(
+`products/searchbooks?query=${items}`
+);
+setLatestItems(res.data);
+
+
+};
+ 
+ 
 
   // Fetch all cart items
   const getAllCart = async () => {
-    const cartData = await axios.post(
-      "https://online-bookstore-backend-4bsl.onrender.com/cart/getallcart",
+    const cartData = await instance.post(
+      "cart/getallcart",
       {},
       { withCredentials: true }
     );
@@ -51,8 +57,8 @@ const StoreContextProvider = (props) => {
   const removeCart = async (productId) => {
     try {
       console.log(productId);
-      await axios.post(
-        `https://online-bookstore-backend-4bsl.onrender.com/cart/deletecart`,
+      await instance.post(
+        `cart/deletecart`,
         { productId: productId },
         { withCredentials: true }
       );
@@ -75,8 +81,8 @@ const StoreContextProvider = (props) => {
     setQuantity(newQuantity);
 
     try {
-      const res = await axios.post(
-        "https://online-bookstore-backend-4bsl.onrender.com/cart/updatequantity",
+      const res = await instance.post(
+        "cart/updatequantity",
         { productId, quantity: newQuantity },
         { withCredentials: true }
       );

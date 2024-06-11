@@ -12,6 +12,7 @@ import {
 import { StoreContext } from "../../Context/StoreContext";
 import axios from "axios";
 import Cards from "../Cards/Cards";
+import instance from "../../Axios";
 
 const sortOptions = [
   { name: "Most Popular", href: "#", current: true },
@@ -79,8 +80,8 @@ export default function Bookspage() {
     const fetchData = async () => {
       try {
      
-        const res = await axios.post(
-          `https://online-bookstore-backend-4bsl.onrender.com/products/searchbooks?query=${filterItems}`
+        const res = await instance.get(
+          `products/searchbooks?query=${filterItems}`
         );
         setClickFilter(res.data);
        

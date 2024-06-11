@@ -7,6 +7,7 @@ import { StoreContext } from "../../Context/StoreContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import instance from "../../Axios";
 
 function BookDetailes() {
   const navigate = useNavigate();
@@ -16,8 +17,8 @@ function BookDetailes() {
 
   const handleAddToCart = async (productId) => {
     try {
-      const res = await axios.post(
-        "https://online-bookstore-backend-4bsl.onrender.com/cart/addcart",
+      const res = await instance.post(
+        "cart/addcart",
         {
           quantity,
           productId: productId,
@@ -52,8 +53,8 @@ function BookDetailes() {
   const paymentHandler = async (event, productId) => {
     const selectedCourse = product.find((item) => item._id === productId);
     if (!selectedCourse) return;
-    const response = await axios.post(
-      "https://online-bookstore-backend-4bsl.onrender.com/payment/order",
+    const response = await instance.post(
+      "payment/order",
       { amount: selectedCourse.price, productId },
       { withCredentials: true }
     );
@@ -72,8 +73,8 @@ function BookDetailes() {
       handler: async function (response) {
         const body = { ...response, productId };
 
-        const validateResponse = await axios.post(
-          "https://online-bookstore-backend-4bsl.onrender.com/payment/verify",
+        const validateResponse = await instance.post(
+          "payment/verify",
           body,
           { withCredentials: true }
         );

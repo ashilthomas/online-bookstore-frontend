@@ -4,10 +4,11 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
+import instance from "../Axios";
 
 
 function Sign({ setSignShow }) {
-  const navigate = useNavigate()
+ 
   const [currState, setCurrState] = useState("login");
   const [user, setUser] = useState({
     name: "",
@@ -23,16 +24,17 @@ function Sign({ setSignShow }) {
     event.preventDefault();
     let newUrl = "";
     if (currState === "login") {
-      newUrl = "https://online-bookstore-backend-4bsl.onrender.com/user/login";
+      newUrl = "user/login";
     } else {
-      newUrl = "https://online-bookstore-backend-4bsl.onrender.com/user/register";
+      newUrl = "user/register";
     }
     try {
-      const res = await axios.post(newUrl, user, {
+      const res = await instance.post(newUrl, user, {
         withCredentials: true,
       });
   
       if (res.data.success) {
+        console.log(res.data);
         toast(res.data.message);
         setSignShow(false);
   
@@ -45,16 +47,9 @@ function Sign({ setSignShow }) {
         toast.error(res.data.message);
       }
     } catch (error) {
-      if (error.response && error.response.status === 401) {
-        if (error.response.data.message === "Token expired") {
-          alert("Your session has expired. Please log in again.");
-          navigate('/');
-        } else {
-          alert("Unauthorized access.");
-        }
-      } else {
+     
         toast.error(error.response ? error.response.data.message : "An error occurred");
-      }
+    
     }
   };
   

@@ -3,6 +3,7 @@ import "./LatestItems.css";
 import BooksCard from "../BooksCard/BooksCard";
 import { StoreContext } from "../../Context/StoreContext";
 import axios from "axios";
+import instance from "../../Axios";
 
 function LatestItems() {
   const { handleLatestItems, latestItems } = useContext(StoreContext);
@@ -12,7 +13,7 @@ function LatestItems() {
 
   useEffect(() => {
     const fetchCategories = async () => {
-      const res = await axios.get("https://online-bookstore-backend-4bsl.onrender.com/products/categories");
+      const res = await instance.get("products/categories");
       setLatestCategories(res.data.categories);
     };
     fetchCategories();
@@ -20,7 +21,7 @@ function LatestItems() {
 
   useEffect(() => {
     handleLatestItems(currentCategory);
-  }, [currentCategory, handleLatestItems]);
+  }, [currentCategory,]);
 
   const handleSeeMore = () => {
     setVisibleItems((prevVisibleItems) => prevVisibleItems + 6); 
