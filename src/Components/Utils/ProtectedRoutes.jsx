@@ -6,6 +6,7 @@ function ProtectedRoutes({  children }) {
     const navigate = useNavigate();
 
     const token = Cookies.get("token");
+   
     
   
     if (token === undefined) {

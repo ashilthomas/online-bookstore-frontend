@@ -28,7 +28,7 @@ function Sign({ setSignShow }) {
       newUrl = "https://online-bookstore-backend-4bsl.onrender.com/user/register";
     }
     try {
-      const res = await axios.post(newUrl, user, {
+      const res = await axios.post(newUrl,{user},{
         withCredentials: true,
       });
 
