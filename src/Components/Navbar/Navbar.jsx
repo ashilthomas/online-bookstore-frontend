@@ -111,7 +111,7 @@ function Navbar({ setSignShow }) {
             <IoCartOutline size={25} />
           </Link>
 
-          {token ? (
+          
             <div className="dropdown">
               <span onClick={handleButtonClick} className="dropbtn">
                 {" "}
@@ -136,9 +136,9 @@ function Navbar({ setSignShow }) {
                 </a>
               </div>
             </div>
-          ) : (
+         
             <button onClick={() => setSignShow(true)}>Sign</button>
-          )}
+      
         </div>
       </div>
     </nav>
