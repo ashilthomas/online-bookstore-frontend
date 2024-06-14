@@ -1,4 +1,4 @@
-import axios from "axios";
+
 import { createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import instance from "../Axios";
@@ -13,8 +13,8 @@ const StoreContextProvider = (props) => {
   const [latestItems, setLatestItems] = useState([]);
   const [cartAllItems, setCartAllItems] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [cartChanged, setCartChanged] = useState(false); // New state to track cart changes
-  const [quantity, setQuantity] = useState(1); // Default quantity to 1
+  const [cartChanged, setCartChanged] = useState(false); 
+  const [quantity, setQuantity] = useState(1); 
 
   // Get all books
   useEffect(() => {

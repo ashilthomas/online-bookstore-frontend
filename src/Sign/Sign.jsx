@@ -23,9 +23,9 @@ function Sign({ setSignShow }) {
     event.preventDefault();
     let newUrl = "";
     if (currState === "login") {
-      newUrl = "https://online-bookstore-backend-4bsl.onrender.com/user/login";
+      newUrl = "http://localhost:3003/user/login";
     } else {
-      newUrl = "https://online-bookstore-backend-4bsl.onrender.com/user/register";
+      newUrl = "http://localhost:3003/user/register";
     }
     try {
       const res = await axios.post(newUrl,user,{
@@ -38,7 +38,7 @@ function Sign({ setSignShow }) {
         setSignShow(false);
 
         if (currState === "login") {
-          // Handle login specific logic here
+          
         } else if (currState === "signUp") {
           setCurrState("login");
         }

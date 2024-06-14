@@ -44,8 +44,11 @@ function Navbar({ setSignShow }) {
     event.stopPropagation(); // Stop the event from propagating to the parent elements
   };
   const tokenRelease = () => {
-    jsCookie.remove("token");
+    if(token){
+      jsCookie.remove("token");
     setIsOpen(true);
+    }
+   
   };
 
   const style = { color: "black" };
@@ -130,10 +133,10 @@ function Navbar({ setSignShow }) {
                 User
                 </Link>
 
-                
-                <a href="#" onClick={tokenRelease}>
+                <span  onClick={tokenRelease}>
+               
                   Logout
-                </a>
+                </span>
               </div>
             </div>
          

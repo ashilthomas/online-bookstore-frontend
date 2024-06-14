@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { StoreContext } from "../../Context/StoreContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import axios from "axios";
+
 import instance from "../../Axios";
 
 function BookDetailes() {

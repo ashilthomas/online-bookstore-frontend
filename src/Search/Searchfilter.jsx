@@ -10,7 +10,7 @@ import instance from "../Axios";
 
 export function Searchfilter() {
   const { setSearch, search, setLoading, loading } = useContext(StoreContext);
-  const [searchQuery, setSearchQuery] = useState(""); // State to hold the search query
+  const [searchQuery, setSearchQuery] = useState(""); 
   const [searchProduct, setSearchProduct] = useState([]);
 
   console.log(searchQuery);

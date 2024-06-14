@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 
 function Cart() {
-  const { cartAllItems, removeCart,handleChange } = useContext(StoreContext); // Assuming setCartAllItems is available in the context
+  const { cartAllItems, removeCart,handleChange } = useContext(StoreContext); 
   
   
 
