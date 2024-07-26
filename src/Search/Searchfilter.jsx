@@ -13,7 +13,7 @@ export function Searchfilter() {
   const [searchQuery, setSearchQuery] = useState(""); 
   const [searchProduct, setSearchProduct] = useState([]);
 
-  console.log(searchQuery);
+ 
 
   useEffect(() => {
     const fetchData = async () => {

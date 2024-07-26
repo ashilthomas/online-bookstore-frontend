@@ -23,76 +23,74 @@ function App() {
   const { loading } = useContext(StoreContext);
   return (
     <div>
-      <BrowserRouter>
-        {loading && <Loading />}
-        {signShow ? <Sign setSignShow={setSignShow} /> : null}
+    <BrowserRouter>
+      {loading && <Loading />}
+      {signShow ? <Sign setSignShow={setSignShow} /> : null}
 
-        <Searchfilter />
-        <Navbar setSignShow={setSignShow} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-
-          <Route
-            path="/admin"
-            element={
-              <ProtectedRoutes>
-                <Adminpage />
-              </ProtectedRoutes>
-            }
-          />
-          <Route
-            path="/list"
-            element={
-              <ProtectedRoutes>
-                <List />
-              </ProtectedRoutes>
-            }
-          />
-          <Route
-            path="/add"
-            element={
-              <ProtectedRoutes>
-                <Add />
-              </ProtectedRoutes>
-            }
-          />
-          <Route
-            path="/cart"
-            element={
-              <ProtectedRoutes>
-                <Cart />
-              </ProtectedRoutes>
-            }
-          />
-          <Route
-            path="/shope"
-            element={
-              <ProtectedRoutes>
-                <Bookspage />
-              </ProtectedRoutes>
-            }
-          />
-          <Route
-            path="/userdetails"
-            element={
-              <ProtectedRoutes>
-               <UserDetails />
-              </ProtectedRoutes>
-            }
-          />
-          <Route
-            path="/bookdetailes/:id"
-            element={
-              <ProtectedRoutes>
-                <BookDetailes />
-              </ProtectedRoutes>
-            }
-          />
-
-        </Routes>
-        <Footer />
-      </BrowserRouter>
-    </div>
+      <Searchfilter />
+      <Navbar setSignShow={setSignShow} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoutes>
+              <Adminpage />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/list"
+          element={
+            <ProtectedRoutes>
+              <List />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/add"
+          element={
+            <ProtectedRoutes>
+              <Add />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/cart"
+          element={
+            <ProtectedRoutes>
+              <Cart />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/shope"
+          element={
+            <ProtectedRoutes>
+              <Bookspage />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/userdetails"
+          element={
+            <ProtectedRoutes>
+              <UserDetails />
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/bookdetailes/:id"
+          element={
+            <ProtectedRoutes>
+              <BookDetailes />
+            </ProtectedRoutes>
+          }
+        />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+  </div>
   );
 }
 

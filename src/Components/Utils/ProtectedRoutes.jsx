@@ -1,19 +1,15 @@
-import React from "react";
-import {  useNavigate } from "react-router-dom";
-import Cookies from "js-cookie"; 
+import { useNavigate } from "react-router-dom";
 
-function ProtectedRoutes({  children }) {
-    const navigate = useNavigate();
+function ProtectedRoutes({ children }) {
+  const navigate = useNavigate();
 
-    const token = Cookies.get("token");
-   
-    
-  
-    if (token === undefined) {
-      navigate("/", { replace: true });
-    }
-    return children;
-  };
-  
+  const token = sessionStorage.getItem("token");
+
+  if (token == null) {
+    navigate("/", { replace: true });
+  }
+
+  return token ? children : navigate("/");
+}
 
 export default ProtectedRoutes;

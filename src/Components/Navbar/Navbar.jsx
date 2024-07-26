@@ -7,14 +7,17 @@ import { IoCartOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { StoreContext } from "../../Context/StoreContext";
 import { FaUser } from "react-icons/fa6";
-import jsCookie from "js-cookie";
+
 
 function Navbar({ setSignShow }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const { setSearch } = useContext(StoreContext);
 
-  const token = jsCookie.get("token");
+  const token = sessionStorage.getItem('token');
+
+
+  
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -30,22 +33,18 @@ function Navbar({ setSignShow }) {
     setDropdown(!dropdown);
   };
 
-  const closeDropdown = () => {
-    setDropdown(false);
-  };
-
-  // Handle the click event on the dropdown button to toggle the dropdown
+ 
   const handleButtonClick = () => {
     toggleDropdown();
   };
 
-  // Handle the click event on the dropdown content to prevent it from closing the dropdown
+
   const handleDropdownClick = (event) => {
-    event.stopPropagation(); // Stop the event from propagating to the parent elements
+    event.stopPropagation(); 
   };
   const tokenRelease = () => {
     if(token){
-      jsCookie.remove("token");
+      sessionStorage.removeItem('token');
     setIsOpen(true);
     }
    
@@ -139,8 +138,11 @@ function Navbar({ setSignShow }) {
                 </span>
               </div>
             </div>
+            {
+              token ? "": <button onClick={() => setSignShow(true)}>Sign</button>
+            }
          
-            <button onClick={() => setSignShow(true)}>Sign</button>
+           
       
         </div>
       </div>

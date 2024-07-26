@@ -3,16 +3,19 @@ import "./Sign.css";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 
 
 function Sign({ setSignShow }) {
+  const navigation = useNavigate()
   const [currState, setCurrState] = useState("login");
   const [user, setUser] = useState({
     name: "",
     email: "",
     password: "",
   });
+  
 
   const onChangeHandler = (event) => {
     const { name, value } = event.target;
@@ -23,21 +26,28 @@ function Sign({ setSignShow }) {
     event.preventDefault();
     let newUrl = "";
     if (currState === "login") {
-      newUrl = "https://online-bookstore-backend-4bsl.onrender.com/user/login";
+      newUrl = "http://localhost:3003/user/login";
     } else {
-      newUrl = "https://online-bookstore-backend-4bsl.onrender.com/user/register";
+      newUrl = "http://localhost:3003/user/register";
     }
     try {
       const res = await axios.post(newUrl,user,{
-        withCredentials: true,
+            withCredentials:true
       });
 
       if (res.data.success) {
         console.log(res.data);
-        toast(res.data.message);
+        toast.success(res.data.message);
+        sessionStorage.setItem('token', res.data.token);
+
         setSignShow(false);
 
         if (currState === "login") {
+          sessionStorage.setItem('token', res.data.token);
+          setSignShow(false);
+          navigation('/')
+
+
           
         } else if (currState === "signUp") {
           setCurrState("login");
