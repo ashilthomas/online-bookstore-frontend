@@ -11,7 +11,7 @@ function BooksCard({ title, author, price, image, id }) {
         <Link to={`bookdetailes/${id}`}>
           <img
             className="card-img"
-            src={`http://localhost:3003/${image}`}
+            src={`https://online-bookstore-backend-4bsl.onrender.com/${image}`}
             alt={`${title} cover`}
           />
         </Link>

@@ -46,7 +46,7 @@ function UserDetails() {
                 <Row>
                   <Col md={2}>
                     <img
-                      src={`http://localhost:3003/${order.product.image}`}
+                      src={`https://online-bookstore-backend-4bsl.onrender.com/${order.product.image}`}
                       alt={order.product.author}
                       className="img-fluid w-100%"
                     />

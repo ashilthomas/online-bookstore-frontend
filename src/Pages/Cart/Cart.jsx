@@ -34,7 +34,7 @@ function Cart() {
             <>
             <div className="cart-items-title cart-items-item" key={item.product._id}>
               <img 
-                src={`http://localhost:3003/${item.product.image}`}
+                src={`https://online-bookstore-backend-4bsl.onrender.com/${item.product.image}`}
                 alt=""
               />
               <p>{item.title}</p>

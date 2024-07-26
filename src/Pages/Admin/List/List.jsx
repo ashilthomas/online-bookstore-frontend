@@ -24,7 +24,7 @@ function List() {
             </div>
             {product.map((items) => (
               <div className="list-table-format ">
-                <img src={`http://localhost:3003/${items.image}`} alt="" />
+                <img src={`https://online-bookstore-backend-4bsl.onrender.com/${items.image}`} alt="" />
                 <p>{items.title}</p>
                 <p>{items.category}</p>
                 <p>{items.price}</p>

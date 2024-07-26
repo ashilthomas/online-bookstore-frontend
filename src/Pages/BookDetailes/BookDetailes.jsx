@@ -114,7 +114,7 @@ function BookDetailes() {
           <Col className="col-12 col-md-6 ">
             {current && (
               <img
-                src={`http://localhost:3003/${current.image}`}
+                src={`https://online-bookstore-backend-4bsl.onrender.com/${current.image}`}
                 className="product-detaile-img"
                 alt=""
               />

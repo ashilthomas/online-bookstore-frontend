@@ -8,7 +8,7 @@ function Cards({ title, author, price, image, id, setSearch }) {
     <div onClick={() => setSearch(false)} className="group relative">
       <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-50 relative">
         <img
-          src={`http://localhost:3003/${image}`}
+          src={`https://online-bookstore-backend-4bsl.onrender.com/${image}`}
           alt="product image"
           className="h-full w-full object-cover object-center lg:h-full lg:w-full"
         />
