@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import carouselImg from "../../assets/images/R.webp"
 function Hero() {
   return (
-    <div className="container">
+    <div className="">
       <Carousel className="carousel">
         <Carousel.Item interval={1000}>
           <Image
