@@ -12,7 +12,9 @@ import instance from "../../Axios";
 function BookDetailes() {
   const navigate = useNavigate();
   const { id } = useParams();
-  const { product, getAllCart } = useContext(StoreContext);
+  const { product, getAllCart} = useContext(StoreContext);
+  const token = sessionStorage.getItem("token")
+ 
   const [quantity, setquantity] = useState(1);
 
   const handleAddToCart = async (productId) => {
@@ -23,7 +25,11 @@ function BookDetailes() {
           quantity,
           productId: productId,
         },
-        { withCredentials: true }
+        {
+          headers: {
+            'Authorization': ` ${token}` 
+          }
+        }
       );
       getAllCart();
 
@@ -56,7 +62,11 @@ function BookDetailes() {
     const response = await instance.post(
       "payment/order",
       { amount: selectedCourse.price, productId },
-      { withCredentials: true }
+      {
+        headers: {
+          'Authorization': ` ${token}` 
+        }
+      }
     );
 
     const order = await response.data.data;
@@ -76,7 +86,11 @@ function BookDetailes() {
         const validateResponse = await instance.post(
           "payment/verify",
           body,
-          { withCredentials: true }
+          {
+            headers: {
+              'Authorization': ` ${token}` 
+            }
+          }
         );
 
         const jsonResponse = await validateResponse;

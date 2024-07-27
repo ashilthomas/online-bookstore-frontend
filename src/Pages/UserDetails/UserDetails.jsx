@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, ListGroup, Card, Button } from "react-bootstrap";
+const token = sessionStorage.getItem("token")
 
 
 function UserDetails() {
@@ -8,7 +9,11 @@ function UserDetails() {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const res = await axios.get("https://online-bookstore-backend-4bsl.onrender.com/orders/allorders", { withCredentials: true });
+            const res = await axios.get("https://online-bookstore-backend-4bsl.onrender.com/orders/allorders", {
+              headers: {
+                'Authorization': ` ${token}` 
+              }
+            });
             console.log("Orders data:", res.data);
             setOrder(res.data);
           } catch (error) {

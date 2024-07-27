@@ -15,6 +15,7 @@ const StoreContextProvider = (props) => {
   const [loading, setLoading] = useState(false);
   const [cartChanged, setCartChanged] = useState(false); 
   const [quantity, setQuantity] = useState(1); 
+  const token = sessionStorage.getItem("token")
 
   // Get all books
   useEffect(() => {
@@ -41,14 +42,18 @@ setLatestItems(res.data);
 
 };
  
- 
+
 
   // Fetch all cart items
   const getAllCart = async () => {
     const cartData = await instance.post(
       "cart/getallcart",
       {},
-      { withCredentials: true }
+      {
+        headers: {
+          'Authorization': ` ${token}` 
+        }
+      }
     );
     setCartAllItems(cartData.data);
   };
@@ -60,7 +65,11 @@ setLatestItems(res.data);
       await instance.post(
         `cart/deletecart`,
         { productId: productId },
-        { withCredentials: true }
+        {
+          headers: {
+            'Authorization': ` ${token}` 
+          }
+        }
       );
 
       setCartChanged((prev) => !prev);
@@ -84,7 +93,11 @@ setLatestItems(res.data);
       const res = await instance.post(
         "cart/updatequantity",
         { productId, quantity: newQuantity },
-        { withCredentials: true }
+        {
+          headers: {
+            'Authorization': ` ${token}` 
+          }
+        }
       );
 
       toast.success("Quantity updated successfully!");
@@ -97,6 +110,7 @@ setLatestItems(res.data);
   const contextValue = {
     setToken,
     tokens,
+  
     product,
     search,
     setSearch,
