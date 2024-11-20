@@ -4,7 +4,9 @@ import { Card } from "react-bootstrap";
 import { Rating } from "@mui/material";
 import { Link } from "react-router-dom";
 
-function BooksCard({ title, author, price, image, id }) {
+function BooksCard({ name, author, price, image, id }) {
+
+  
   return (
     <div>
       <Card className="border-0 book-card">
@@ -12,11 +14,11 @@ function BooksCard({ title, author, price, image, id }) {
           <img
             className="card-img"
             src={`https://online-bookstore-backend-4bsl.onrender.com/${image}`}
-            alt={`${title} cover`}
+            alt={`${name} cover`}
           />
         </Link>
         <Card.Body className="border-0">
-          <Card.Title>{title}</Card.Title>
+          <Card.Title>{name}</Card.Title>
           <div className="card-info">
             <div className="card-author">{author}</div>
           </div>{" "}

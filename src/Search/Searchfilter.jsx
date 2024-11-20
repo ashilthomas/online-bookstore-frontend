@@ -91,7 +91,7 @@ export function Searchfilter() {
                   searchProduct.map((item) => (
                     <Cards
                       key={item._id}
-                      title={item.title}
+                      name={item.name}
                       author={item.author}
                       price={item.price}
                       image={item.image}

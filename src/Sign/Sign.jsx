@@ -20,6 +20,7 @@ function Sign({ setSignShow }) {
   const onChangeHandler = (event) => {
     const { name, value } = event.target;
     setUser((prevData) => ({ ...prevData, [name]: value }));
+    
   };
 
   const onLogin = async (event) => {

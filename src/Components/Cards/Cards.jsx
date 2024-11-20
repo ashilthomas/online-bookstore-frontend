@@ -3,7 +3,7 @@ import React from "react";
 import { Rating } from "@mui/material";
 import { Link } from "react-router-dom";
 
-function Cards({ title, author, price, image, id, setSearch }) {
+function Cards({ name, author, price, image, id, setSearch }) {
   return (
     <div onClick={() => setSearch(false)} className="group relative">
       <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-50 relative">
@@ -16,11 +16,11 @@ function Cards({ title, author, price, image, id, setSearch }) {
       <Link to={`/bookdetailes/${id}`}> 
         <div className="mt-4">
           <div>
-            <h3 className="text-sm text-gray-700">
+            <h3 className="text-lg text-gray-700">
             
             
-                <span aria-hidden="true" className="absolute inset-0" />
-                {title}
+                <span  className=" font-bold" />
+                {name}
             
             </h3>
             <p className="mt-1 text-sm text-gray-500">{author}</p>

@@ -9,6 +9,8 @@
     gap: 10px;
     padding-left: 0;
     justify-content: end;
+   overflow: auto;
+   width:100%;
    
 }
 

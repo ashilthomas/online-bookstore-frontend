@@ -62,9 +62,9 @@ function LatestItems() {
         <div className="row mt-5">
           {latestItems &&
             latestItems.slice(0, visibleItems).map((items) => (
-              <div className="col-md-2" key={items._id}> {/* Added key here */}
+              <div className="col-md-2 col-6" key={items._id}> {/* Added key here */}
                 <BooksCard
-                  title={items.title}
+                  title={items.name}
                   author={items.author}
                   price={items.price}
                   image={items.image}
