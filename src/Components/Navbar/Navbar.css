@@ -177,3 +177,34 @@
   .dropdown a:hover {background-color: #ddd;}
   
   .show {display: block;}
+
+/* Cart icon badge */
+.cart-icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.cart-count {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 9px;
+  background-color: var(--secon-bg-color);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 18px;
+  text-align: center;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 12px;
+}
+
+@media (max-width: 900px) {
+  .cart-count {
+    top: -6px;
+    right: -10px;
+  }
+}

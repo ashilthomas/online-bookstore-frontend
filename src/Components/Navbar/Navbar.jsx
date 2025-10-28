@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import "./Navbar.css";
 import { AiOutlineClose } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -12,7 +12,7 @@ import { FaUser } from "react-icons/fa6";
 function Navbar({ setSignShow }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const { setSearch } = useContext(StoreContext);
+  const { setSearch, cartAllItems } = useContext(StoreContext);
 
   const token = sessionStorage.getItem('token');
 
@@ -51,6 +51,16 @@ function Navbar({ setSignShow }) {
   };
 
   const style = { color: "black" };
+
+  // Total items in cart (sum of quantities)
+  const cartCount = useMemo(() => {
+    try {
+      if (!cartAllItems || !Array.isArray(cartAllItems)) return 0;
+      return cartAllItems.reduce((sum, item) => sum + (item?.quantity || 0), 0);
+    } catch (e) {
+      return 0;
+    }
+  }, [cartAllItems]);
   return (
     <nav className="navbar animate__animated animate__fadeInDown">
       <div className="navbar-container">
@@ -99,8 +109,11 @@ function Navbar({ setSignShow }) {
           <span onClick={openSearch}>
             <BsSearch size={20} />
           </span>
-          <Link to={"/cart"}>
+          <Link to={"/cart"} className="cart-icon">
             <IoCartOutline size={25} />
+            {cartCount > 0 && (
+              <span className="cart-count" aria-label={`Cart items: ${cartCount}`}>{cartCount}</span>
+            )}
           </Link>
 
           
