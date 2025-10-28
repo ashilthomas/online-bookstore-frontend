@@ -390,7 +390,7 @@ export default function Bookspage() {
 
                         <Cards
                       key={item._id}
-                      title={item.title}
+                      name={item.name}
                       author={item.author}
                       price={item.price}
                       image={item.image}

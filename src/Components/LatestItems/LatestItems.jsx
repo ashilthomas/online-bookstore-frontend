@@ -50,9 +50,9 @@ function LatestItems() {
                 </li>
                 {sliceCategories.map((category) => (
                   <li className={category === currentCategory ? "active" : ""}
-                      key={category._id}
+                      key={category}
                       onClick={() => handleCategoryClick(category)}>
-                    {category} {/* Assuming each category has a 'name' property */}
+                    {category}
                   </li>
                 ))}
               </ul>
@@ -64,7 +64,7 @@ function LatestItems() {
             latestItems.slice(0, visibleItems).map((items) => (
               <div className="col-md-2 col-6" key={items._id}> {/* Added key here */}
                 <BooksCard
-                  title={items.name}
+                  name={items.name}
                   author={items.author}
                   price={items.price}
                   image={items.image}

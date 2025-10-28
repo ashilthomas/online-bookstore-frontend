@@ -1,15 +1,8 @@
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 function ProtectedRoutes({ children }) {
-  const navigate = useNavigate();
-
   const token = sessionStorage.getItem("token");
-
-  if (token == null) {
-    navigate("/", { replace: true });
-  }
-
-  return token ? children : navigate("/");
+  return token ? children : <Navigate to="/sign" replace />;
 }
 
 export default ProtectedRoutes;

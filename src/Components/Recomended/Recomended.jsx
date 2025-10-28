@@ -22,12 +22,11 @@ function Recomended() {
           slicedProducts.map((item) => (
              <Cards
                key={item._id}
-               title={item.title}
+               name={item.name}
                author={item.author}
                price={item.price}
                image={item.image}
                id={item._id}
-             
              />
            ))}
        </div>

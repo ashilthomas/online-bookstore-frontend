@@ -10,7 +10,7 @@ function BooksCard({ name, author, price, image, id }) {
   return (
     <div>
       <Card className="border-0 book-card">
-        <Link to={`bookdetailes/${id}`}>
+        <Link to={`/bookdetailes/${id}`}>
           <img
             className="card-img"
             src={new URL(`${image}`, import.meta.env.VITE_API_URL || "https://online-bookstore-backend-4bsl.onrender.com/").toString()}

@@ -133,7 +133,7 @@ function BookDetailes() {
           <Col className="col-12 col-md-6 product-details">
             {current && (
               <>
-                <h2>{current.title}</h2>
+                <h2>{current.name}</h2>
                 <h3>{current.author}</h3>
                 <p>{current.price}</p>
                 <p>

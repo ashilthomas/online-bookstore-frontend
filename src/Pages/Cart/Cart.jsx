@@ -31,13 +31,13 @@ function Cart() {
         </div>
         <div>
           {cartAllItems.map((item) => (
-            <>
-            <div className="cart-items-title cart-items-item" key={item.product._id}>
+            <React.Fragment key={item.product._id}>
+            <div className="cart-items-title cart-items-item">
               <img 
                 src={new URL(`${item.product.image}`, import.meta.env.VITE_API_URL || "https://online-bookstore-backend-4bsl.onrender.com/").toString()}
                 alt=""
               />
-              <p>{item.title}</p>
+              <p>{item.product?.name}</p>
               <p>${item.product.price}</p>
               <form>
                 <label htmlFor={`qty-${item.product._id}`}>Qty:</label>
@@ -62,10 +62,10 @@ function Cart() {
                 X
               </p>
             </div>  <hr />
-            </>
+            </React.Fragment>
           ))}
         
-        </div>
+       </div>
       </div>
     </div>
   );

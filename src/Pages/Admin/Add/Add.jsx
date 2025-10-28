@@ -10,13 +10,13 @@ function Add() {
 
   
    
-    const [image,setImage]=useState(false)
+    const [image,setImage]=useState(null)
     const [data,setData]=useState({
         name:"",
         description:'',
         author:"",
         price:"",
-        category:"Salad"
+        category:"History"
     })
  ;
 const onchangeHandiler =(event)=>{
@@ -43,12 +43,12 @@ const onchangeHandiler =(event)=>{
                 description:'',
                 author:"",
                 price:"",
-                category:"Horror"
+                category:"History"
                })
-               setImage(false)
+               setImage(null)
                toast.success(response.data.message)
           }else{
-             toast.error(res.data.message)
+            toast.error(response.data.message)
           }
    }
    console.log(data);
@@ -96,7 +96,7 @@ const onchangeHandiler =(event)=>{
                 </div>
                 <div className="add-price flex-col">
                       <p>product price</p>
-                      <input  className='square border' type="Number" onChange={onchangeHandiler} value={data.price} name="price" placeholder='$20' required />
+                      <input  className='square border' type="number" onChange={onchangeHandiler} value={data.price} name="price" placeholder='$20' required />
                 </div>
 
             </div>

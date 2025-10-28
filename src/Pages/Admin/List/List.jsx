@@ -13,7 +13,7 @@ function List() {
 
       <div className="add ">
         <div className="list add flex-col">
-          <p>All Foods List</p>
+          <p>All Books List</p>
           <div className="list-table">
             <div className="list-table-format title">
               <b>Image</b>
@@ -23,9 +23,9 @@ function List() {
               <b>Action</b>
             </div>
             {product.map((items) => (
-              <div className="list-table-format ">
+              <div className="list-table-format " key={items._id}>
                 <img src={new URL(`${items.image}`, import.meta.env.VITE_API_URL || "https://online-bookstore-backend-4bsl.onrender.com/").toString()} alt="" />
-                <p>{items.title}</p>
+                <p>{items.name}</p>
                 <p>{items.category}</p>
                 <p>{items.price}</p>
                 <p className="cursor">X</p>
