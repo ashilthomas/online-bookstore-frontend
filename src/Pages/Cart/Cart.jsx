@@ -34,7 +34,7 @@ function Cart() {
             <>
             <div className="cart-items-title cart-items-item" key={item.product._id}>
               <img 
-                src={`https://online-bookstore-backend-4bsl.onrender.com/${item.product.image}`}
+                src={new URL(`${item.product.image}`, import.meta.env.VITE_API_URL || "https://online-bookstore-backend-4bsl.onrender.com/").toString()}
                 alt=""
               />
               <p>{item.title}</p>

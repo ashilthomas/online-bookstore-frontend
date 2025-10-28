@@ -18,33 +18,39 @@ function BookDetailes() {
   const [quantity, setquantity] = useState(1);
 
   const handleAddToCart = async (productId) => {
+    if (!token) {
+      toast.error("Please login to add items to cart");
+      navigate("/");
+      return;
+    }
+    
     try {
+      console.log("Adding to cart:", productId, "quantity:", quantity);
       const res = await instance.post(
-        "cart/addcart",
+        "/cart/addcart",
         {
           quantity,
           productId: productId,
-        },
-        {
-          headers: {
-            'Authorization': ` ${token}` 
-          }
         }
       );
+      
+      console.log("Cart response:", res.data);
       getAllCart();
 
       if (res.data.success) {
-        toast(res.data.message);
+        toast.success(res.data.message);
       } else {
-        toast(res.data.message);
+        toast.error(res.data.message);
       }
     } catch (error) {
+      console.error("Cart error:", error);
       if (error.response && error.response.status === 401) {
         if (error.response.data.message === "Token expired") {
-          alert("Your session has expired. Please log in again.");
+          sessionStorage.removeItem("token");
+          toast.error("Your session has expired. Please log in again.");
           navigate("/");
         } else {
-          alert("Unauthorized access.");
+          toast.error("Unauthorized access.");
         }
       } else {
         toast.error(
@@ -61,12 +67,7 @@ function BookDetailes() {
     if (!selectedCourse) return;
     const response = await instance.post(
       "payment/order",
-      { amount: selectedCourse.price, productId },
-      {
-        headers: {
-          'Authorization': ` ${token}` 
-        }
-      }
+      { amount: selectedCourse.price, productId }
     );
 
     const order = await response.data.data;
@@ -85,12 +86,7 @@ function BookDetailes() {
 
         const validateResponse = await instance.post(
           "payment/verify",
-          body,
-          {
-            headers: {
-              'Authorization': ` ${token}` 
-            }
-          }
+          body
         );
 
         const jsonResponse = await validateResponse;
@@ -128,7 +124,7 @@ function BookDetailes() {
           <Col className="col-12 col-md-6 ">
             {current && (
               <img
-                src={`https://online-bookstore-backend-4bsl.onrender.com/${current.image}`}
+                src={new URL(`${current.image}`, import.meta.env.VITE_API_URL || "https://online-bookstore-backend-4bsl.onrender.com/").toString()}
                 className="product-detaile-img"
                 alt=""
               />

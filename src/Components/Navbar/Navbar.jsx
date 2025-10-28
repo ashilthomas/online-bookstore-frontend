@@ -4,7 +4,7 @@ import { AiOutlineClose } from "react-icons/ai";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { BsSearch } from "react-icons/bs";
 import { IoCartOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { StoreContext } from "../../Context/StoreContext";
 import { FaUser } from "react-icons/fa6";
 
@@ -64,37 +64,27 @@ function Navbar({ setSignShow }) {
         </Link>
 
         <ul className={isOpen ? "nav-menu active" : "nav-menu"}>
-          {" "}
-          {/* Conditional CSS class for responsiveness */}
+          {/* Primary navigation */}
           <li className="nav-item">
-            {" "}
-            <Link to={"/"}>
-              <a href="" className="nav-links">
-                Home
-              </a>
-            </Link>
+            <NavLink to="/" className={({ isActive }) => `nav-links ${isActive ? 'active' : ''}`}>
+              Home
+            </NavLink>
           </li>
           <li className="nav-item">
-            <a href="" className="nav-links">
-              About
-            </a>
+            <span className="nav-links" role="button">About</span>
           </li>
           <li className="nav-item">
-            <Link to={"/shope"}>
-              <a href="" className="nav-links">
-                Shope
-              </a>
-            </Link>
+            <NavLink to="/shope" className={({ isActive }) => `nav-links ${isActive ? 'active' : ''}`}>
+              Shop
+            </NavLink>
           </li>
           <li className="nav-item">
-            <a href="" className="nav-links">
-              Contact
-            </a>
+            <span className="nav-links" role="button">Contact</span>
           </li>
           <li className="nav-item">
-            <a href="" className="nav-links">
-              <Link to={"/product"}> Blog</Link>
-            </a>
+            <NavLink to="/product" className={({ isActive }) => `nav-links ${isActive ? 'active' : ''}`}>
+              Blog
+            </NavLink>
           </li>
         </ul>
 
@@ -139,7 +129,7 @@ function Navbar({ setSignShow }) {
               </div>
             </div>
             {
-              token ? "": <button onClick={() => setSignShow(true)}>Sign</button>
+              token ? "" : <button className="sign-btn" onClick={() => setSignShow(true)}>Sign</button>
             }
          
            

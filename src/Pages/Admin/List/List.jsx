@@ -24,7 +24,7 @@ function List() {
             </div>
             {product.map((items) => (
               <div className="list-table-format ">
-                <img src={`https://online-bookstore-backend-4bsl.onrender.com/${items.image}`} alt="" />
+                <img src={new URL(`${items.image}`, import.meta.env.VITE_API_URL || "https://online-bookstore-backend-4bsl.onrender.com/").toString()} alt="" />
                 <p>{items.title}</p>
                 <p>{items.category}</p>
                 <p>{items.price}</p>

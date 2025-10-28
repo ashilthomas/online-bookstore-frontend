@@ -1,5 +1,5 @@
 
-  .middle {
+.middle {
     /* height: 100%;
     width: 100%;
     /* top: 50%;
@@ -26,7 +26,7 @@
   .bar {
     width: 10px;
     height: 70px;
-    background: #fff;
+    background: #e9ecef;
     display: inline-block;
     transform-origin: bottom center;
     border-top-right-radius: 20px;
@@ -61,11 +61,11 @@
   @keyframes loader {
     0% {
       transform: scaleY(0.1);
-      
+      background: #e9ecef;
     }
     50% {
       transform: scaleY(1);
-      background: yellowgreen;
+      background: var(--secon-bg-color);
     }
     100% {
       transform: scaleY(0.1);

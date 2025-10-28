@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import "./Add.css"
-import axios from 'axios'
+import { toast } from 'react-toastify'
+import instance from '../../../Axios'
 import Sidebar from '../../../Components/Sidebar/Sidebar'
 
 
@@ -34,7 +35,7 @@ const onchangeHandiler =(event)=>{
           formData.append('category',data.category)
           formData.append("image",image)
 
-          const response = await axios.post("https://online-bookstore-backend-4bsl.onrender.com/products/addbooks",formData)
+          const response = await instance.post("products/addbooks", formData)
 
           if(response.data.success){
                setData({

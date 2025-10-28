@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Sign.css";
-import axios from "axios";
+import instance from "../Axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
@@ -25,16 +25,9 @@ function Sign({ setSignShow }) {
 
   const onLogin = async (event) => {
     event.preventDefault();
-    let newUrl = "";
-    if (currState === "login") {
-      newUrl = "https://online-bookstore-backend-4bsl.onrender.com/user/login";
-    } else {
-      newUrl = "https://online-bookstore-backend-4bsl.onrender.com/user/register";
-    }
+    const endpoint = currState === "login" ? "user/login" : "user/register";
     try {
-      const res = await axios.post(newUrl,user,{
-            withCredentials:true
-      });
+      const res = await instance.post(endpoint, user);
 
       if (res.data.success) {
         console.log(res.data);
@@ -104,7 +97,7 @@ function Sign({ setSignShow }) {
         </div>
         {currState === "login" ? (
           <p>
-            create a new account? <span onClick={() => setCurrState("sign Up")}>click here</span>
+            create a new account? <span onClick={() => setCurrState("signUp")}>click here</span>
           </p>
         ) : (
           <p>

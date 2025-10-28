@@ -11,7 +11,7 @@
 
 :root {
   --secon-bg-color: #FF1616;
-  --main-text-color: #0000;
+  --main-text-color: #000000;
   --body-color: #E0E0E0;
   --box-color: white;
 }
@@ -22,7 +22,7 @@
   box-sizing: border-box;
 }
 body{
-  font-family: "Oswald", sans-serif;
+  font-family: "Inter", sans-serif;
   position: relative;
 }
 

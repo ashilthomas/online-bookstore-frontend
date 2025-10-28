@@ -48,12 +48,7 @@ setLatestItems(res.data);
   const getAllCart = async () => {
     const cartData = await instance.post(
       "cart/getallcart",
-      {},
-      {
-        headers: {
-          'Authorization': ` ${token}` 
-        }
-      }
+      {}
     );
     setCartAllItems(cartData.data);
   };
@@ -62,22 +57,17 @@ setLatestItems(res.data);
   const removeCart = async (productId) => {
     try {
       console.log(productId);
-      await instance.post(
+      const res = await instance.post(
         `cart/deletecart`,
-        { productId: productId },
-        {
-          headers: {
-            'Authorization': ` ${token}` 
-          }
-        }
+        { productId: productId }
       );
 
       setCartChanged((prev) => !prev);
       if (res.data.success) {
-        toast.success(res.data.success);
+        toast.success(res.data.message);
       }
     } catch (error) {
-      toast.error(error);
+      toast.error(error.response ? error.response.data.message : "Failed to remove item from cart");
     }
   };
 
@@ -92,12 +82,7 @@ setLatestItems(res.data);
     try {
       const res = await instance.post(
         "cart/updatequantity",
-        { productId, quantity: newQuantity },
-        {
-          headers: {
-            'Authorization': ` ${token}` 
-          }
-        }
+        { productId, quantity: newQuantity }
       );
 
       toast.success("Quantity updated successfully!");

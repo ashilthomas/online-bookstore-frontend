@@ -1,4 +1,4 @@
-import axios from "axios";
+import instance from "../../Axios";
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, ListGroup, Card, Button } from "react-bootstrap";
 const token = sessionStorage.getItem("token")
@@ -9,11 +9,7 @@ function UserDetails() {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const res = await axios.get("https://online-bookstore-backend-4bsl.onrender.com/orders/allorders", {
-              headers: {
-                'Authorization': ` ${token}` 
-              }
-            });
+            const res = await instance.get("orders/allorders");
             console.log("Orders data:", res.data);
             setOrder(res.data);
           } catch (error) {
@@ -51,7 +47,7 @@ function UserDetails() {
                 <Row>
                   <Col md={2}>
                     <img
-                      src={`https://online-bookstore-backend-4bsl.onrender.com/${order.product.image}`}
+                      src={new URL(`${order.product.image}`, import.meta.env.VITE_API_URL || "https://online-bookstore-backend-4bsl.onrender.com/").toString()}
                       alt={order.product.author}
                       className="img-fluid w-100%"
                     />

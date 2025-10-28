@@ -18,12 +18,13 @@
     list-style: none;
     color: #454e6d;
     font-size: 16px;
-    font-weight: 400;
-    padding: 7px 24px;
+    font-weight: 500;
+    padding: 8px 16px;
     cursor: pointer;
-    
-    border: 1px solid #eee1e0;
-    border-radius: 20px;
+    transition: all .2s ease;
+    border: 1px solid #e8e8e8;
+    border-radius: 18px;
+    background-color: #fff;
 }
 
 .latest-categories ul li a {
@@ -33,11 +34,17 @@
 
 .latest-categories ul .active {
     background-color: var(--secon-bg-color);
-    color: white;
+    color: #fff;
+    border-color: var(--secon-bg-color);
+    box-shadow: 0 6px 16px rgba(255, 22, 22, 0.25);
+}
+
+.latest-categories ul li:hover {
+    background-color: #f7f7f7;
 }
 
 .latest-browse button {
-    padding: 7px 24px;
+    padding: 8px 18px;
     border: none;
     border-radius: 20px;
     background-color: var(--secon-bg-color);
@@ -47,6 +54,10 @@
 .latest-browse .active{
     background-color: black;
     color: white;
+}
+
+.latest-browse button:hover {
+    filter: brightness(0.95);
 }
 
 @media screen and (max-width: 768px) {

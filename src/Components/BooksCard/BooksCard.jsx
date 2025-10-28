@@ -13,7 +13,7 @@ function BooksCard({ name, author, price, image, id }) {
         <Link to={`bookdetailes/${id}`}>
           <img
             className="card-img"
-            src={`https://online-bookstore-backend-4bsl.onrender.com/${image}`}
+            src={new URL(`${image}`, import.meta.env.VITE_API_URL || "https://online-bookstore-backend-4bsl.onrender.com/").toString()}
             alt={`${name} cover`}
           />
         </Link>

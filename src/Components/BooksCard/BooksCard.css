@@ -1,6 +1,7 @@
-.book-card{max-width:210px;border:none}
-.card-img{width:100%;object-fit:cover;cursor:pointer;height: 300px;}
+.book-card{max-width:210px;border:none;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.08);transition:transform .2s ease, box-shadow .2s ease;overflow:hidden;background:#fff}
+.book-card:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(0,0,0,0.12)}
+.card-img{width:100%;object-fit:cover;cursor:pointer;height: 300px;display:block}
 .card-content{display:flex;justify-content:space-between;align-items: center;}
 .card-info{display:flex;flex-direction:column}
 .card-author{margin-bottom:10px;color:#000;text-decoration:none}
-.card-price{color:var(--secon-bg-color);font-size:20px}
+.card-price{color:var(--secon-bg-color);font-size:20px;font-weight:600}
