@@ -5,7 +5,7 @@ import "./List.css";
 import { StoreContext } from "../../../Context/StoreContext";
 
 function List() {
-  const { product } = useContext(StoreContext);
+  const { product, removeBook } = useContext(StoreContext);
 
   return (
     <div className="admin-panel section">
@@ -28,7 +28,7 @@ function List() {
                 <p>{items.name}</p>
                 <p>{items.category}</p>
                 <p>{items.price}</p>
-                <p className="cursor">X</p>
+                <p className="cursor" onClick={() => removeBook(items._id)}>X</p>
               </div>
             ))}
           </div>

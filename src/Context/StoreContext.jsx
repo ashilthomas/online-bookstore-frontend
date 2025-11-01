@@ -71,6 +71,24 @@ setLatestItems(res.data);
     }
   };
 
+  // Remove book from products
+  const removeBook = async (bookId) => {
+    try {
+      const res = await instance.post(
+        `products/removebooks/${bookId}`,
+        {}
+      );
+
+      if (res.data.success) {
+        toast.success(res.data.message);
+        // Update the product list by filtering out the removed book
+        setProduct((prevProducts) => prevProducts.filter((book) => book._id !== bookId));
+      }
+    } catch (error) {
+      toast.error(error.response ? error.response.data.message : "Failed to remove book");
+    }
+  };
+
   useEffect(() => {
     getAllCart();
   }, [cartChanged, quantity]);
@@ -95,7 +113,7 @@ setLatestItems(res.data);
   const contextValue = {
     setToken,
     tokens,
-  
+
     product,
     search,
     setSearch,
@@ -109,6 +127,7 @@ setLatestItems(res.data);
     setLoading,
     handleChange,
     removeCart,
+    removeBook,
   };
 
   return (
@@ -119,3 +138,4 @@ setLatestItems(res.data);
 };
 
 export default StoreContextProvider;
+
